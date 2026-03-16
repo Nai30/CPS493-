@@ -1,4 +1,7 @@
 <script setup>
+import { currentUser, switchUser, users } from '../store/userStore.js';
+
+
 
 </script>
 
@@ -22,31 +25,26 @@
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
+  <div id="navbarBasicExample" class="navbar-menu has-background-primary">
     <div class="navbar-start">
-      <a class="navbar-item">
-        Home
-      </a>
-
-      <a class="navbar-item">
-        Documentation
-      </a>
+    <router-link class="navbar-item" to="/"> home</router-link>
+    <router-link class="navbar-item" to="/admin"> admin </router-link>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
-          More
+         Activity
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
+          <router-link class="navbar-item" to="/personal">
+            Personal
+          </router-link>
           <a class="navbar-item is-selected">
-            Jobs
+            Friends
           </a>
-          <a class="navbar-item">
-            Contact
-          </a>
+          <router-link class="navbar-item" to="/stats">
+            Statistics
+          </router-link>
           <hr class="navbar-divider">
           <a class="navbar-item">
             Report an issue
@@ -56,21 +54,32 @@
     </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
-        </div>
-      </div>
+     <div class="navbar-item has-dropdown is-hoverable">
+  
+  <a class="navbar-link">
+    👤 {{ currentUser.name }}
+  </a>
+
+  <div class="navbar-dropdown">
+    
+    <a
+      v-for="user in users"
+      :key="user.id"
+      class="navbar-item"
+      @click="switchUser(user.id)"
+    >
+      Switch to {{ user.name }}
+    </a>
+
+  </div>
+
+</div>
     </div>
   </div>
 </nav>
 
     </div>
+
 </template>
 
 <style lang="scss" scoped>

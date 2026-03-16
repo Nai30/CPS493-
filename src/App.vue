@@ -1,6 +1,5 @@
 <script setup>
 import NavBar from '@/components/NavBar.vue'
-import UserSwitcher from '@/components/UserSwitcher.vue'
 
 </script>
 
@@ -9,7 +8,8 @@ import UserSwitcher from '@/components/UserSwitcher.vue'
 
   </div>
   <NavBar />
- <UserSwitcher />
+
+<router-view />
 </template>
 
 <style lang="scss" scoped>
