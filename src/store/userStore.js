@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { users } from '@/data/users.js'
+import { users } from '@/server/data/users.js'
 
 export const currentUser = ref(users[0]) // creates a reactive variable called current user, using ref means that if user[] changes it is updated 
 export function switchUser(id){
