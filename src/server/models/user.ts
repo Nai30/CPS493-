@@ -1,5 +1,5 @@
 import type { User } from "../types/index"
-import data1 from "/data/users.json"
+import data1 from "../data/users.json"
 import { PagingRequest } from "../types/dataEnvelopes"
 
 type ItemType = User
