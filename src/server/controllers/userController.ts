@@ -1,5 +1,6 @@
 import { Router } from "express"
 import { getAll, get, create, update, remove } from "../models/user"
+import * as model from "../models/user";
 import { User, DataEnvelope, DataListEnvelope } from "../types"
 
 const app = Router()
@@ -16,6 +17,17 @@ app.get("/", (req, res) => {
         total: count,
     }
     res.send(response)
+})
+.post("/login", (req, res) => {
+    const { email, password } = req.body;
+    const user = model.login(email, password);
+    
+    const response: DataEnvelope<any> = {
+        data: user,
+        isSuccess: true,
+        message: `Welcome back, ${user.name}!`
+    };
+    res.send(response);
 })
     .get("/count", (req, res) => {
         const { count } = getAll(req.query)

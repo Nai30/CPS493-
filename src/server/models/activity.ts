@@ -13,6 +13,7 @@ export interface Activity {
 export const getAll = () => {
     return { list: data.activities, count: data.activities.length };
 };
+//get activities based on a user id number
 export const getByUserId = (userId: number) => {
     const list = data.activities.filter((activity: any) => activity.userId === userId);
     return { list, count: list.length };
@@ -54,4 +55,15 @@ export function remove(id: number) {
     // 4. Remove it from the array
     const removedActivity = data.activities.splice(index, 1)[0];
     return removedActivity;
+}
+//getting a friend's activities based on the user's id number
+export function getFriendsActivities(userId: number){
+    //find the user first
+    const user= data.users.find((u:any) => u.id ==userId);
+    if(!user || !user.friends){
+        return{list:[],count: 0}
+    }
+    //get the friends' activities
+    const friendsActivities = data.activities.filter((a:any) => user.friends.includes(a.userId));
+    return {list: friendsActivities, count: friendsActivities.length}
 }

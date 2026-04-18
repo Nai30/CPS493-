@@ -2,6 +2,7 @@ import express from "express"
 import usersController from "./controllers/userController"
 import { DataEnvelope } from "./types/dataEnvelopes"
 import dotenv from "dotenv" 
+import activityController from "./controllers/activityController"
 dotenv.config()
 
 const PORT = process.env.PORT || 3000 
@@ -23,6 +24,7 @@ app.get("/", (_req, res)=> {
         res.send("The best university in the world!")
     })
     .use("/api/v1/users", usersController)
+    .use("/api/v1/activities", activityController)
 ///////////Error handling
 app.use((
     err: Error,
