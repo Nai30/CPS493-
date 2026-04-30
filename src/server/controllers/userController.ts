@@ -20,10 +20,10 @@ app.get("/", (req, res) => {
 })
 .post("/login", (req, res) => {
     const { email, password } = req.body;
-    const user = model.login(email, password);
+    const {user,token} = model.login(email, password);
     
     const response: DataEnvelope<any> = {
-        data: user,
+        data: {user, token},
         isSuccess: true,
         message: `Welcome back, ${user.name}!`
     };
@@ -64,6 +64,14 @@ app.get("/", (req, res) => {
         res.send(response)
     })
     .delete("/:id", (req, res) => {
+        if((req as any).user.role !== "admin"){
+            const response: DataEnvelope<null> = {
+                data: null,
+                isSuccess: false,
+                message: "Unauthorized: Only admins can delete users."
+            }
+            return res.status(403).send(response);
+        }
         const { id } = req.params
         const removedUser = remove(Number(id))
         const response: DataEnvelope<User> = {

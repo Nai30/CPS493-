@@ -2,7 +2,6 @@ const data = require("../data/activities.json");
 // This defines what an Activity looks like for TypeScript
 export interface Activity {
     id: number;
-    userId: number;
     description: string;
     duration: number;
     calories: number;
@@ -15,7 +14,7 @@ export const getAll = () => {
 };
 //get activities based on a user id number
 export const getByUserId = (userId: number) => {
-    const list = data.activities.filter((activity: any) => activity.userId === userId);
+    const list = data.activities.filter((activity: any) => activity.id === userId);
     return { list, count: list.length };
 }
 export const create  = (activity: any) => {

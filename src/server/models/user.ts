@@ -93,7 +93,8 @@ export function login(email: string, password: string) {
     }
     //create jwt token with user email and password as param and our secret key
     const token = jwt.sign({id: user.id,passwordHash: user.passwordHash}, JWT_SECRET, { expiresIn: "1h" });
-    //return our user without password and token
+    //return our user without password and a token
+    //the token allows you to acces protected routes
     const { passwordHash: _, ...userWithoutPassword } = user ;
     return { 
         user: userWithoutPassword, 

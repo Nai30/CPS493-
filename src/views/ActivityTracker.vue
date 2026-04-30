@@ -1,13 +1,29 @@
 <script setup>
-import { ref } from 'vue'
-import { currentUser } from '../store/userStore.js'
+import { ref, onMounted} from 'vue'
+import { currentUser,token } from '../store/userStore.js'
 
-// Reactive array of activities
-const activities = ref([
-  { id: 1, name: 'Hiking Bear Mountain' },
-  { id: 2, name: 'Bike through campus' }
-])
 
+// Empty activities array
+const activities = ref([])
+async function fetchActivities() {
+  try {
+    const response = await fetch('http://localhost:3000/api/v1/activities/my-activities', {
+      headers: {
+        'Authorization': `Bearer ${token.value}`
+      }
+    })
+    const result = await response.json()
+    if (result.isSuccess) {
+      activities.value = result.data
+    }
+  } catch (error) {
+    console.error("Failed to fetch:", error)
+  }
+}
+
+onMounted(() => {
+  fetchActivities()
+})
 const newActivity = ref('')       // For adding new activities
 const editingId = ref(null)       // Id of activity being edited
 const editText = ref('')          // Temporary text for editing

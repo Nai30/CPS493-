@@ -8,31 +8,37 @@ const app = Router();
 app.use(authorize); 
 
 app.get("/", (req, res) => {
-    // Now, this code ONLY runs if the token was valid!
-    const { list, count } = model.getAll();
-    res.send({ data: list, isSuccess: true, total: count });
-});
-app.get("/", (req, res) => {
     const { list, count } = model.getAll();
     const response: DataListEnvelope<any> = {
         data: list,
         isSuccess: true,
         total: count
     };
-    res.send(response);
+    res.send(response)
 })
 
 .get("/friends/:userId",(req,res)=> {
  const userId = Number(req.params.userId);
-    // We'll write this model function next
+    
     const { list, count } = model.getFriendsActivities(userId); 
     const response: DataListEnvelope<any> = {
         data: list,
         isSuccess: true,
         total: count
     };
-    res.send(response);
+    res.send(response)
 
+})
+.get("/my-activities", (req, res) => {
+    // The bouncer (authorize) put the user info into req.user
+    const userId = (req as any).user.id; 
+    const { list, count } = model.getByUserId(userId);
+    
+    res.send({
+        data: list,
+        isSuccess: true,
+        total: count
+    });
 })
 //duplicate? is it possible to have two get routes with the same path? if not, should we change the path for one of them? j
 .get("/user/:userId", (req, res) => {
@@ -43,7 +49,7 @@ app.get("/", (req, res) => {
         isSuccess: true,
         total: count
     };
-    res.send(response);
+    res.send(response)
 })
 .patch("/:id", (req, res) => {
     const updated = model.update(Number(req.params.id), req.body);
@@ -59,7 +65,7 @@ app.get("/", (req, res) => {
         data: newActivity,
         isSuccess: true
     };
-    res.status(201).send(response);
+    res.status(201).send(response)
 });
 
 

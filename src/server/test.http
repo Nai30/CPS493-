@@ -1,0 +1,26 @@
+@host = http://localhost:3000/api/v1
+
+### 1. Test the "Locked Door" (Should return 401)
+GET {{host}}/activities
+
+### 2. Login to get a token
+# @name login
+POST {{host}}/users/login
+Content-Type: application/json
+
+{
+    "email": "alice123@gmail.com",
+    "password": "password123"
+}
+ 
+### store token into a variable
+@authToken = {{login.response.body.data.token}}
+ ### 3. Use the token to access the protected routes
+ GET {{host}}/activities/my-activities
+Authorization: Bearer {{authToken}}
+
+### 4.testing
+GET {{host}}/test
+### 5. get all activities
+GET {{host}}/activities
+Authorization: Bearer {{authToken}}
