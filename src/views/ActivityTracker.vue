@@ -29,13 +29,29 @@ const editingId = ref(null)       // Id of activity being edited
 const editText = ref('')          // Temporary text for editing
 
 // Add new activity
-function addActivity() {
+async function addActivity() {
   if (newActivity.value.trim() === '') return
-  activities.value.push({
-    id: Date.now(),
-    name: newActivity.value
-  })
-  newActivity.value = ''
+
+  try {
+    const response = await fetch('http://localhost:3000/api/v1/activities', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token.value}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: newActivity.value
+      })
+    })
+
+    const result = await response.json()
+    if (result.isSuccess) {
+      activities.value.push(result.data)
+      newActivity.value = ''
+    }
+  } catch (error) {
+    console.error("Failed to add activity:", error)
+  }
 }
 
 // Delete activity
@@ -100,7 +116,9 @@ function cancelEdit() {
           placeholder="New activity"
           @keyup.enter="addActivity"
         />
-        <button class="button is-primary mt-2" @click="addActivity">Add Activity</button>
+      <button :class="['button', 'is-primary', { 'is-loading': isAdding }]" @click="addActivity">
+    Add Activity
+</button>
       </div>
     </div>
   </div>

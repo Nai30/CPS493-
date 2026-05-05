@@ -20,14 +20,26 @@ app.get("/", (req, res) => {
 })
 .post("/login", (req, res) => {
     const { email, password } = req.body;
-    const {user,token} = model.login(email, password);
     
-    const response: DataEnvelope<any> = {
-        data: {user, token},
-        isSuccess: true,
-        message: `Welcome back, ${user.name}!`
-    };
-    res.send(response);
+    // Safety check: if model.login fails, handle it so it doesn't crash
+    try {
+        const {user, token} = model.login(email, password);
+        
+        const response: DataEnvelope<any> = {
+            data: {user, token},
+            isSuccess: true,
+            message: `Welcome back, ${user.name}!`
+        };
+
+        // CHANGE THIS LINE:
+        res.json(response); 
+        
+    } catch (error) {
+        res.status(401).json({
+            isSuccess: false,
+            message: "Invalid email or password"
+        });
+    }
 })
     .get("/count", (req, res) => {
         const { count } = getAll(req.query)
@@ -63,23 +75,38 @@ app.get("/", (req, res) => {
         }
         res.send(response)
     })
-    .delete("/:id", (req, res) => {
-        if((req as any).user.role !== "admin"){
-            const response: DataEnvelope<null> = {
-                data: null,
+.delete("/:id", (req, res) => {
+    // 1. Authorization Guard
+    if ((req as any).user.role !== "admin") {
+        return res.status(403).json({
+            isSuccess: false,
+            message: "Unauthorized: Access denied."
+        });
+    }
+
+    const { id } = req.params;
+    
+    try {
+        const removedUser = remove(Number(id));
+
+        if (!removedUser) {
+            return res.status(404).json({
                 isSuccess: false,
-                message: "Unauthorized: Only admins can delete users."
-            }
-            return res.status(403).send(response);
+                message: "User not found."
+            });
         }
-        const { id } = req.params
-        const removedUser = remove(Number(id))
-        const response: DataEnvelope<User> = {
+
+        res.json({
             data: removedUser,
             isSuccess: true,
-            message: `User ${removedUser.name} has been removed.`,
-        }
-        res.send(response)
-    })
+            message: `User ${removedUser.name} deleted successfully.`
+        });
+    } catch (error) {
+        res.status(500).json({
+            isSuccess: false,
+            message: "Database error during deletion."
+        });
+    }
+})
 
 export default app
