@@ -30,9 +30,29 @@
         "totalCalories": 250000
       },
       "activities": [
-        {"date": "2026-04-10T07:15:00Z", "type": "run", "duration_min": 35, "distance_km": 6.1, "calories": 340, "steps": 8200},
-        {"date": "2026-04-12T18:00:00Z", "type": "strength", "duration_min": 45, "distance_km": 0, "calories": 220, "sets": 6},
-        {"date": "2026-04-13T06:30:00Z", "type": "yoga", "duration_min": 40, "distance_km": 0, "calories": 140}
+        {
+          "date": "2026-04-10T07:15:00Z",
+          "type": "run",
+          "duration_min": 35,
+          "distance_km": 6.1,
+          "calories": 340,
+          "steps": 8200
+        },
+        {
+          "date": "2026-04-12T18:00:00Z",
+          "type": "strength",
+          "duration_min": 45,
+          "distance_km": 0,
+          "calories": 220,
+          "sets": 6
+        },
+        {
+          "date": "2026-04-13T06:30:00Z",
+          "type": "yoga",
+          "duration_min": 40,
+          "distance_km": 0,
+          "calories": 140
+        }
       ],
       "friends": [2, 3]
     },

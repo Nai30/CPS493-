@@ -92,6 +92,61 @@ const totalAdmins = computed(() => users.filter(u => u.role === 'admin').length)
 
     </div>
   </section>
+  <div class="modal" :class="{ 'is-active': isEditModalActive }">
+  <div class="modal-background" @click="isEditModalActive = false"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Edit User Profile</p>
+      <button class="delete" aria-label="close" @click="isEditModalActive = false"></button>
+    </header>
+    <section class="modal-card-body">
+      
+      <div class="field">
+        <label class="label">User ID</label>
+        <div class="control">
+          <p class="is-size-5 has-text-weight-bold has-text-grey">#{{ editingUser.id }}</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Full Name</label>
+        <div class="control has-icons-left">
+          <input class="input" type="text" v-model="editingUser.name">
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Location</label>
+        <div class="control has-icons-left">
+          <input class="input" type="text" v-model="editingUser.profile.location">
+          <span class="icon is-small is-left">
+            <i class="fas fa-map-marker-alt"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Account Role</label>
+        <div class="control">
+          <div class="select is-fullwidth">
+            <select v-model="editingUser.role">
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-warning" @click="saveEdit">Update User</button>
+      <button class="button" @click="isEditModalActive = false">Cancel</button>
+    </footer>
+  </div>
+</div>
 </template>
 
 <style scoped>

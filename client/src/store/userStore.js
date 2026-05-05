@@ -12,6 +12,15 @@ const loginEmail = ref('');
 const loginPassword = ref('');
 const isLoggingIn = ref(false);
 
+export async function fetchAllUsers() {
+    const response = await fetch('http://localhost:3000/api/v1/users', {
+        headers: { 'Authorization': `Bearer ${token.value}` }
+    });
+    const result = await response.json();
+    if (result.isSuccess) {
+        users.value = result.data; // Now the array exists for findIndex!
+    }
+}
 export function setToken(newToken){
     token.value = newToken;
     localStorage.setItem('token', newToken);

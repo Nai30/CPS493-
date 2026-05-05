@@ -75,16 +75,28 @@ app.get("/", (req, res) => {
         }
         res.send(response)
     })
-.delete("/:id", (req, res) => {
-
-
-   
-    if ((req as any).user?.role !== "admin") {
-        return res.status(403).json({
-            isSuccess: false,
-            message: "Unauthorized: You must be an admin to delete users."
-        });
+    .put("/:id",authorize, (req, res) => {
+        if ((req as any).user?.role !== "admin") {
+        return res.status(403).json({ isSuccess: false, message: "Admin access required." });
     }
+        const { id } = req.params
+        const updatedUser = update(Number(id), req.body)
+        const response: DataEnvelope<User> = {
+            data: updatedUser as User,
+            isSuccess: true,
+        }
+        res.send(response)
+    })  
+.delete("/:id",authorize, (req, res) => {
+
+
+   if ((req as any).user?.role !== "admin") {
+  return res.status(403).json({
+    isSuccess: false,
+ 
+    message: `Unauthorized: ou must be an admin to delete users. ${(req as any).user?.name}, with role ${(req as any).user?.role}, attempted to delete user with id ${req.params.id}.`
+})
+}
 
     const { id } = req.params;
     
