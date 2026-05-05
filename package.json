@@ -16,6 +16,7 @@
     "core-js": "^3.8.3",
     "dotenv": "^17.4.2",
     "jsonwebtoken": "^9.0.3",
+    "tsx": "^4.21.0",
     "typescript": "^6.0.2",
     "vue": "^3.2.13",
     "vue-chartjs": "^5.3.3",
