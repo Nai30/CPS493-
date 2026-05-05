@@ -35,11 +35,18 @@ async function addActivity() {
         'Authorization': `Bearer ${token.value}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name: newActivity.value })
+      // ✅ Send the fields your backend expects
+      body: JSON.stringify({ 
+        type: newActivity.value, 
+        duration_min: 30, // Default value
+        calories: 100,    // Default value
+        date: new Date().toISOString(),
+        userId: currentUser.value.id 
+      })
     })
     const result = await response.json()
     if (result.isSuccess) {
-      activities.value.unshift(result.data) // Adds to the top of the list
+      activities.value.unshift(result.data)
       newActivity.value = ''
     }
   } finally {
@@ -112,7 +119,7 @@ async function deleteActivity(id) {
                 <div class="media-content">
                   <div class="content">
                     <p>
-                      <strong class="is-size-5">{{ activity.name }}</strong>
+                      <strong class="is-size-5">{{ activity?.type }}</strong>
                       <br />
                       <small class="has-text-grey">
                         Logged {{ new Date().toLocaleDateString() }} at {{ new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}

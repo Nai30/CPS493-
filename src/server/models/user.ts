@@ -1,28 +1,34 @@
-import type { User } from "../types/index"
-const data1 = require("../data/users.json");
-import { PagingRequest } from "../types/dataEnvelopes"
-//importing jsonwebtoken to create a token for the user at login
+import type { User } from "../types/index";
+import { PagingRequest } from "../types/dataEnvelopes";
 import jwt from "jsonwebtoken";
-//importing the secret key from the .env file
+import fs from "fs";
+import path from "path";
+
+// 1. Load the data. We use 'data1' as the container and 'usersArray' as the pointer.
+const data1 = require("../data/users.json");
+const fileName = path.join(__dirname, "../data/users.json");
 const JWT_SECRET = process.env.JWT_SECRET || "change-me-later";
 
-type ItemType = User
-const data = {
-    ...data1,
-    items: data1.users,
-}
+type ItemType = User;
+const usersArray: ItemType[] = data1.users;
+
+// Helper function to save changes to the disk
+const saveToFile = () => {
+    fs.writeFileSync(fileName, JSON.stringify(data1, null, 2), "utf-8");
+};
 
 export function getAll(params: PagingRequest) {
-    let list = data.items as ItemType[]
-    const count = list.length
+    let list = [...usersArray]; // Use a spread to avoid mutating the original array during filtering
+    const count = list.length;
 
     if (params?.search) {
-        const search = params.search.toLowerCase()
+        const search = params.search.toLowerCase();
         list = list.filter((item) =>
             `${item.name}`.toLowerCase().includes(search),
-        )
+        );
     }
-  if (params?.sortBy) {
+
+    if (params?.sortBy) {
         const sortField = params.sortBy as keyof ItemType;
         list.sort((a, b) => {
             const valA = (a as any)[sortField];
@@ -32,73 +38,76 @@ export function getAll(params: PagingRequest) {
             return 0;
         });
     }
-    const page = params?.page || 1
-    const pageSize = params?.pageSize || 10
-    const start = (page - 1) * pageSize
-    list = list.slice(start, start + pageSize)
 
-    return { list, count }
+    const page = params?.page || 1;
+    const pageSize = params?.pageSize || 10;
+    const start = (page - 1) * pageSize;
+    list = list.slice(start, start + pageSize);
+
+    return { list, count };
 }
 
 export function get(id: number): ItemType {
-    const item = data.items.find((item:any) => item.id === id)
+    const item = usersArray.find((u) => u.id === id);
     if (!item) {
-        const error = { status: 404, message: "ItemType not found" }
-        throw error
+        throw { status: 404, message: "User not found" };
     }
-    return item as ItemType
+    return item;
 }
 
 export function create(user: ItemType) {
-    const newItemType = {
+    const newItem = {
         ...user,
-        id: data.items.length + 1,
-    }
-    data.items.push(newItemType as any)
-    return newItemType
+        id: usersArray.length > 0 ? Math.max(...usersArray.map(u => u.id)) + 1 : 1,
+    };
+    usersArray.push(newItem);
+    saveToFile();
+    return newItem;
 }
 
 export function update(id: number, user: Partial<ItemType>) {
-    const index = data.items.findIndex((u:any) => u.id === id)
+    const index = usersArray.findIndex((u) => u.id === id);
     if (index === -1) {
-        const error = { status: 404, message: "ItemType not found" }
-        throw error
+        throw { status: 404, message: "User not found" };
     }
-    const updatedItemType = {
-        ...data.items[index],
-        ...user,
-    }
-    data.items[index] = updatedItemType as any
-    return updatedItemType
+
+    // Merge existing user data with the new updates
+    usersArray[index] = { ...usersArray[index], ...user };
+    
+    saveToFile();
+    return usersArray[index];
 }
 
 export function remove(id: number) {
-const userList = data.users || data.items; 
+    const index = usersArray.findIndex((u) => u.id === id);
+    if (index === -1) return null;
 
-    const index = userList.findIndex((u: any) => u.id === id);
-    if (index === -1) {
-        return null;
-    }
-    const removedItemType = data.items.splice(index, 1)[0];
-
-
-    return removedItemType as ItemType
+    const removedUser = usersArray.splice(index, 1)[0];
+    saveToFile();
+    return removedUser;
 }
 
-//letting a user login by checking if there is user with the same email and password in the json file
 export function login(email: string, password: string) {
-    const user = data.items.find(
-        (u:any) => u.email === email && u.passwordHash === password,
-    )
+    const user = usersArray.find(
+        (u) => u.email === email && u.passwordHash === password,
+    );
+    
     if (!user) {
-        const error = { status: 401, message: "Invalid email or password" }
-        throw error
+        throw { status: 401, message: "Invalid email or password" };
     }
-    //create jwt token with user email and password as param and our secret key
-    const token = jwt.sign({id: user.id,passwordHash: user.passwordHash}, JWT_SECRET, { expiresIn: "1h" });
-    //return our user without password and a token
-    //the token allows you to acces protected routes
-    const { passwordHash: _, ...userWithoutPassword } = user ;
+
+    const token = jwt.sign(
+        {
+            id: user.id,
+            name: user.name,
+            role: user.role,
+            passwordHash: user.passwordHash
+        }, 
+        JWT_SECRET, 
+        { expiresIn: "1h" }
+    );
+
+    const { passwordHash: _, ...userWithoutPassword } = user;
     return { 
         user: userWithoutPassword, 
         token 

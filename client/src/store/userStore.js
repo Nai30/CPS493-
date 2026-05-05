@@ -1,34 +1,36 @@
 import { ref } from 'vue'
-// Access the specific "users" key inside your JSON file
-import userData from './data/users.json'
 
-// Ensure we are exporting the actual array so .find() works
-export const users = userData.users 
-
+export const users = ref([])
 export const currentUser = ref(null) 
 export const token = ref(localStorage.getItem('token') || '');
-const showLoginModal = ref(false);
-const loginEmail = ref('');
-const loginPassword = ref('');
-const isLoggingIn = ref(false);
+export const showLoginModal = ref(false);
+export const loginEmail = ref('');
+export const loginPassword = ref('');
+export const isLoggingIn = ref(false);
 
 export async function fetchAllUsers() {
-    const response = await fetch('http://localhost:3000/api/v1/users', {
-        headers: { 'Authorization': `Bearer ${token.value}` }
-    });
-    const result = await response.json();
-    if (result.isSuccess) {
-        users.value = result.data; // Now the array exists for findIndex!
+    try {
+        const response = await fetch('http://localhost:3000/api/v1/users', {
+            headers: { 'Authorization': `Bearer ${token.value}` }
+        });
+        const result = await response.json();
+        if (result.isSuccess) {
+            // ✅ Updates the reactive array
+            users.value = result.data; 
+        }
+    } catch (err) {
+        console.error("Fetch users failed:", err);
     }
 }
+
 export function setToken(newToken){
     token.value = newToken;
     localStorage.setItem('token', newToken);
 }
 
 export function switchUser(id){
-    // Now that 'users' is definitely an array, .find() will work
-    const found = users.find(u => u.id === id)
+    // ✅ MUST USE .value
+    const found = users.value.find(u => u.id === id)
     if (found) {
         currentUser.value = found
     } else {
@@ -36,8 +38,7 @@ export function switchUser(id){
     }
 }
 
-
- async function performLogin() {
+export async function performLogin() {
   isLoggingIn.value = true;
   try {
     const response = await fetch('http://localhost:3000/api/v1/users/login', {
@@ -53,11 +54,16 @@ export function switchUser(id){
 
     if (result.isSuccess) {
       setToken(result.data.token);
-      // We find the user in our local list to update the UI
-      const foundUser = users.find(u => u.email === loginEmail.value);
-      if (foundUser) switchUser(foundUser.id);
       
-      // Close the box and reset
+      // ✅ We need to fetch users first so our local list isn't empty
+      await fetchAllUsers();
+
+      // ✅ Use .value to find the user that just logged in
+      const foundUser = users.value.find(u => u.email === loginEmail.value);
+      if (foundUser) {
+          currentUser.value = foundUser;
+      }
+      
       showLoginModal.value = false;
       loginEmail.value = '';
       loginPassword.value = '';
@@ -70,7 +76,8 @@ export function switchUser(id){
     isLoggingIn.value = false;
   }
 }
-async function deleteUser(userId) {
+
+export async function deleteUser(userId) {
     if (!confirm("Are you sure you want to delete this user?")) return;
 
     try {
@@ -85,7 +92,7 @@ async function deleteUser(userId) {
         const result = await response.json();
 
         if (result.isSuccess) {
-            // Update the local array so the row vanishes instantly
+            // ✅ Use .value
             const index = users.value.findIndex(u => u.id === userId);
             if (index !== -1) {
                 users.value.splice(index, 1);
@@ -98,11 +105,51 @@ async function deleteUser(userId) {
     }
 }
 
-export {
-  showLoginModal,
-  loginEmail,
-  loginPassword,
-  isLoggingIn,
-  performLogin,
-  deleteUser
+export async function updateUser (userId, updatedData) {
+    try {
+        const response = await fetch(`http://localhost:3000/api/v1/users/${userId}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token.value}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedData)
+        });
+
+        const result = await response.json();
+
+        if (result.isSuccess) {
+            // ✅ Use .value
+            const index = users.value.findIndex(u => u.id === userId);
+            if (index !== -1) {
+                // Merge the new data into the existing user object
+                users.value[index] = { ...users.value[index], ...updatedData };
+            }
+        } else {
+            alert(result.message);
+        }
+    } catch (err) {
+        console.error("Update failed:", err);
+    }
+}
+export const friendsActivities = ref([]);
+
+export async function fetchFriendsActivities() {
+  
+    if (!currentUser.value) {
+        console.warn("No user logged in. Skipping friends feed fetch.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:3000/api/v1/activities/friends/${currentUser.value.id}`, {
+            headers: { 'Authorization': `Bearer ${token.value}` }
+        });
+        const result = await response.json();
+        if (result.isSuccess) {
+            friendsActivities.value = result.data;
+        }
+    } catch (err) {
+        console.error("Failed to load friends' feed:", err);
+    }
 }

@@ -3,7 +3,6 @@ import usersController from "./controllers/userController"
 import { DataEnvelope } from "./types/dataEnvelopes"
 import dotenv from "dotenv" 
 import activityController from "./controllers/activityController"
-import { authorize } from "./middleware/auth"
 dotenv.config()
 import cors from 'cors'; // 1. Import it
 const app = express();
@@ -28,8 +27,8 @@ app.get("/", (_req, res)=> {
     .get("/suny", (_req, res)=>{
         res.send("The best university in the world!")
     })
-    .use("/api/v1/users",authorize, usersController)
-    .use("/api/v1/activities",authorize, activityController)
+    .use("/api/v1/users",usersController)
+    .use("/api/v1/activities",activityController)
 
 ///////////Error handling
 app.use((

@@ -2,6 +2,7 @@ import { Router } from "express"
 import { getAll, get, create, update, remove } from "../models/user"
 import * as model from "../models/user";
 import { User, DataEnvelope, DataListEnvelope } from "../types"
+import { authorize } from "../middleware/auth"
 
 const app = Router()
 

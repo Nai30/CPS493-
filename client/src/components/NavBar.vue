@@ -34,6 +34,7 @@ const isActive = ref(false);
           <div class="navbar-dropdown">
             <router-link class="navbar-item" to="/personal">Personal</router-link>
             <router-link class="navbar-item" to="/stats">Statistics</router-link>
+            <router-link class="navbar-item" to="/friends">Friends</router-link>
           </div>
         </div>
       </div>

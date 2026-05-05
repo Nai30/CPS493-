@@ -1,75 +1,82 @@
+import fs from "fs";
+import path from "path";
+
+// 1. Load the data
 const data = require("../data/activities.json");
-// This defines what an Activity looks like for TypeScript
+const userData = require("../data/users.json");
+const fileName = path.join(__dirname, "../data/activities.json");
+
+// Helper to save to file
+const saveToFile = () => {
+    fs.writeFileSync(fileName, JSON.stringify(data, null, 2), "utf-8");
+};
+
 export interface Activity {
     id: number;
-    description: string;
-    duration: number;
+    userId: number; // 👈 Make sure this is in your interface!
+    description?: string;
+    duration_min: number;
     calories: number;
     date: string;
-    type?: string; // e.g., 'Running', 'Yoga'
+    type: string;
+    distance_km?: number;
 }
 
+// 2. Fix the function logic
 export const getAll = () => {
     return { list: data.activities, count: data.activities.length };
 };
-//get activities based on a user id number
-export const getByUserId = (userId: number) => {
-const allActivities = this.getAll(); 
 
-    // 2. Filter for only this user's activities
-    const filteredList = allActivities.filter(act => act.userId === userId);
+export const getByUserId = (userId: number) => {
+    // Access the array directly from the 'data' object we required
+    const filteredList = data.activities.filter((act: any) => act.userId === userId);
 
     return {
         list: filteredList,
         count: filteredList.length
     };
 }
-export const create  = (activity: any) => {
+
+export const create = (activity: any) => {
     const newActivity = {
         ...activity,
-        id: data.activities.length + 1,
-    }
-    data.activities.push(newActivity)
-    return newActivity
+        id: data.activities.length > 0 ? Math.max(...data.activities.map((a: any) => a.id)) + 1 : 1,
+    };
+    data.activities.push(newActivity);
+    saveToFile(); // 💾 Persist
+    return newActivity;
 }
+
 export function update(id: number, activityUpdates: Partial<Activity>) {
-    // 1. Find the activity in your JSON array
-    const index = data.activities.findIndex((a:any) => a.id === id);
-    
+    const index = data.activities.findIndex((a: any) => a.id === id);
     if (index === -1) {
         throw { status: 404, message: "Activity not found" };
     }
 
-    // 2. Merge the old activity with the new updates
-    const updatedActivity = {
-        ...data.activities[index],
-        ...activityUpdates,
-    };
-
-    // 3. Save it back to the array
-    data.activities[index] = updatedActivity;
-    return updatedActivity;
+    data.activities[index] = { ...data.activities[index], ...activityUpdates };
+    saveToFile(); // 💾 Persist
+    return data.activities[index];
 }
 
 export function remove(id: number) {
-    const index = data.activities.findIndex((a:any) => a.id === id);
-    
-    if (index === -1) {
-        throw { status: 404, message: "Activity not found" };
-    }
+    const index = data.activities.findIndex((a: any) => a.id === id);
+    if (index === -1) return null;
 
-    // 4. Remove it from the array
     const removedActivity = data.activities.splice(index, 1)[0];
+    saveToFile(); // 💾 Persist
     return removedActivity;
 }
-//getting a friend's activities based on the user's id number
-export function getFriendsActivities(userId: number){
-    //find the user first
-    const user= data.users.find((u:any) => u.id ==userId);
-    if(!user || !user.friends){
-        return{list:[],count: 0}
-    }
-    //get the friends' activities
-    const friendsActivities = data.activities.filter((a:any) => user.friends.includes(a.userId));
-    return {list: friendsActivities, count: friendsActivities.length}
+
+export function getFriendsActivities(userId: number) {
+    const user = userData.users.find((u: any) => u.id === userId);
+    console.log("Found User:", user?.name, "Friends:", user?.friends); // 👈 Debug 1
+    
+    if (!user || !user.friends) return { list: [], count: 0 };
+
+    const friendsActivities = data.activities.filter((a: any) => {
+        console.log("Checking activity for user:", a.userId); // 👈 Debug 2
+        return user.friends.includes(Number(a.userId));
+    });
+
+    return { list: friendsActivities, count: friendsActivities.length };
 }

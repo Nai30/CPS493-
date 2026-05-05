@@ -1,13 +1,44 @@
 <script setup>
-import { currentUser, users, deleteUser } from '../store/userStore.js';
-import { computed } from 'vue';
+import { fetchAllUsers, currentUser, users, deleteUser,updateUser } from '../store/userStore.js';
+import { computed, ref, onMounted} from 'vue';
 
+onMounted(() => {
+  fetchAllUsers();
+});
 // Check if current user is an admin
 const isAdmin = computed(() => currentUser.value?.role === 'admin');
 
 // Calculate some quick stats for the admin dashboard
-const totalUsers = computed(() => users.length);
-const totalAdmins = computed(() => users.filter(u => u.role === 'admin').length);
+const totalUsers = computed(() => users.value.length);
+const totalAdmins = computed(() => users.value.filter(u => u.role === 'admin').length);
+
+const isEditModalActive = ref(false);
+const editingUser = ref({
+  id: null,
+  name: '',
+  role: '',
+  profile: { location: '' }
+});
+
+function startEdit(user) {
+  // Use a deep copy so the table doesn't change while you're typing in the modal
+  editingUser.value = JSON.parse(JSON.stringify(user));
+  isEditModalActive.value = true;
+}
+
+async function saveEdit() {
+  // We send the ID separately to the URL, and the data in the body
+  await updateUser(editingUser.value.id, {
+    name: editingUser.value.name,
+    role: editingUser.value.role,
+    profile: {
+      ...editingUser.value.profile,
+      location: editingUser.value.profile.location
+    }
+  });
+  isEditModalActive.value = false;
+}
+
 </script>
 
 <template>
@@ -79,7 +110,7 @@ const totalAdmins = computed(() => users.filter(u => u.role === 'admin').length)
                   <td>{{ new Date(user.profile?.joinedAt).toLocaleDateString() }}</td>
                   <td>
                     <div class="buttons">
-                      <button class="button is-small is-warning is-light">Edit</button>
+                      <button class="button is-small is-warning is-light" @click="startEdit(user)">Edit</button>
                       <button class="button is-small is-danger is-light" :disabled="user.id === currentUser.id" @click="deleteUser(user.id)">Delete</button>
                     </div>
                   </td>

@@ -44,7 +44,7 @@
       "date": "2026-04-13T07:00:00Z",
       "type": "run",
       "duration_min": 50,
-      "distance_km": 10.0,
+      "distance_km": 10,
       "calories": 680
     },
     {
@@ -62,7 +62,7 @@
       "date": "2026-04-12T12:30:00Z",
       "type": "run",
       "duration_min": 28,
-      "distance_km": 5.0,
+      "distance_km": 5,
       "calories": 290
     },
     {
@@ -89,7 +89,7 @@
       "date": "2026-04-11T06:00:00Z",
       "type": "run",
       "duration_min": 70,
-      "distance_km": 15.0,
+      "distance_km": 15,
       "calories": 1100
     },
     {
@@ -107,7 +107,7 @@
       "date": "2026-04-10T08:00:00Z",
       "type": "walk",
       "duration_min": 40,
-      "distance_km": 4.0,
+      "distance_km": 4,
       "calories": 200
     },
     {
@@ -116,8 +116,16 @@
       "date": "2026-04-12T07:30:00Z",
       "type": "cycling",
       "duration_min": 35,
-      "distance_km": 12.0,
+      "distance_km": 12,
       "calories": 420
+    },
+    {
+      "type": "swim",
+      "duration_min": 30,
+      "calories": 100,
+      "date": "2026-05-05T18:17:13.050Z",
+      "userId": 1,
+      "id": 14
     }
   ]
 }
