@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 .post("/login", (req, res) => {
     const { email, password } = req.body;
     
-    // Safety check: if model.login fails, handle it so it doesn't crash
+    // Safety check: if model.login fails
     try {
         const {user, token} = model.login(email, password);
         
@@ -76,11 +76,13 @@ app.get("/", (req, res) => {
         res.send(response)
     })
 .delete("/:id", (req, res) => {
-    // 1. Authorization Guard
-    if ((req as any).user.role !== "admin") {
+
+
+   
+    if ((req as any).user?.role !== "admin") {
         return res.status(403).json({
             isSuccess: false,
-            message: "Unauthorized: Access denied."
+            message: "Unauthorized: You must be an admin to delete users."
         });
     }
 
@@ -89,6 +91,7 @@ app.get("/", (req, res) => {
     try {
         const removedUser = remove(Number(id));
 
+        // If the user wasn't found, stop here to avoid reading .name of null
         if (!removedUser) {
             return res.status(404).json({
                 isSuccess: false,
@@ -99,14 +102,12 @@ app.get("/", (req, res) => {
         res.json({
             data: removedUser,
             isSuccess: true,
-            message: `User ${removedUser.name} deleted successfully.`
+            message: `User ${removedUser.name} has been removed.`
         });
     } catch (error) {
-        res.status(500).json({
-            isSuccess: false,
-            message: "Database error during deletion."
-        });
+        console.error("DETAILED ERROR:", error); // Check your terminal for this!
+        res.status(500).json({ isSuccess: false, message: "Server error" });
     }
-})
+});
 
 export default app

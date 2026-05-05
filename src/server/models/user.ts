@@ -73,12 +73,15 @@ export function update(id: number, user: Partial<ItemType>) {
 }
 
 export function remove(id: number) {
-    const index = data.items.findIndex((u:any) => u.id === id)
+const userList = data.users || data.items; 
+
+    const index = userList.findIndex((u: any) => u.id === id);
     if (index === -1) {
-        const error = { status: 404, message: "ItemType not found" }
-        throw error
+        return null;
     }
-    const removedItemType = data.items.splice(index, 1)[0]
+    const removedItemType = data.items.splice(index, 1)[0];
+
+
     return removedItemType as ItemType
 }
 

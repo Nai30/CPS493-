@@ -3,11 +3,15 @@ import usersController from "./controllers/userController"
 import { DataEnvelope } from "./types/dataEnvelopes"
 import dotenv from "dotenv" 
 import activityController from "./controllers/activityController"
+import { authorize } from "./middleware/auth"
 dotenv.config()
+import cors from 'cors'; // 1. Import it
+const app = express();
 
+app.use(cors());
 const PORT = process.env.PORT || 3000 
 const SERVER = "localhost"
-const app= express()
+
 app.get("/test", (req, res) => res.send("Server is alive!"));
 
 app.use((_req, res, next)=> {
@@ -24,8 +28,8 @@ app.get("/", (_req, res)=> {
     .get("/suny", (_req, res)=>{
         res.send("The best university in the world!")
     })
-    .use("/api/v1/users", usersController)
-    .use("/api/v1/activities", activityController)
+    .use("/api/v1/users",authorize, usersController)
+    .use("/api/v1/activities",authorize, activityController)
 
 ///////////Error handling
 app.use((

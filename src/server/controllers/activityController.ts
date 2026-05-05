@@ -9,6 +9,7 @@ app.use(authorize);
 
 app.get("/", (req, res) => {
     const { list, count } = model.getAll();
+    
     const response: DataListEnvelope<any> = {
         data: list,
         isSuccess: true,

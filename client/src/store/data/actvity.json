@@ -1,8 +1,7 @@
 {
-  "activities": [
+  "activity": [
     {
       "id": 1,
-      "userId": 1,
       "date": "2026-04-10T07:15:00Z",
       "type": "run",
       "duration_min": 35,
@@ -12,7 +11,6 @@
     },
     {
       "id": 2,
-      "userId": 1,
       "date": "2026-04-12T18:00:00Z",
       "type": "strength",
       "duration_min": 45,
@@ -22,7 +20,6 @@
     },
     {
       "id": 3,
-      "userId": 3,
       "date": "2026-04-13T06:30:00Z",
       "type": "yoga",
       "duration_min": 40,
@@ -31,7 +28,6 @@
     },
     {
       "id": 4,
-      "userId": 2,
       "date": "2026-04-11T19:10:00Z",
       "type": "cycling",
       "duration_min": 60,
@@ -40,7 +36,6 @@
     },
     {
       "id": 5,
-      "userId": 2,
       "date": "2026-04-13T07:00:00Z",
       "type": "run",
       "duration_min": 50,
@@ -49,7 +44,6 @@
     },
     {
       "id": 6,
-      "userId": 4,
       "date": "2026-04-09T06:20:00Z",
       "type": "walk",
       "duration_min": 30,
@@ -58,7 +52,6 @@
     },
     {
       "id": 7,
-      "userId": 5,
       "date": "2026-04-12T12:30:00Z",
       "type": "run",
       "duration_min": 28,
@@ -67,7 +60,6 @@
     },
     {
       "id": 8,
-      "userId": 3,
       "date": "2026-04-12T17:15:00Z",
       "type": "swim",
       "duration_min": 45,
@@ -76,7 +68,6 @@
     },
     {
       "id": 9,
-      "userId": 4,
       "date": "2026-04-13T06:00:00Z",
       "type": "strength",
       "duration_min": 40,
@@ -85,7 +76,6 @@
     },
     {
       "id": 10,
-      "userId": 1,
       "date": "2026-04-11T06:00:00Z",
       "type": "run",
       "duration_min": 70,
@@ -94,7 +84,6 @@
     },
     {
       "id": 11,
-      "userId": 5,
       "date": "2026-04-13T19:30:00Z",
       "type": "yoga",
       "duration_min": 60,
@@ -103,7 +92,6 @@
     },
     {
       "id": 12,
-      "userId": 6,
       "date": "2026-04-10T08:00:00Z",
       "type": "walk",
       "duration_min": 40,
@@ -112,7 +100,6 @@
     },
     {
       "id": 13,
-      "userId": 6,
       "date": "2026-04-12T07:30:00Z",
       "type": "cycling",
       "duration_min": 35,

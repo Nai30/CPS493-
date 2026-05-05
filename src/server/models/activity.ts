@@ -14,8 +14,15 @@ export const getAll = () => {
 };
 //get activities based on a user id number
 export const getByUserId = (userId: number) => {
-    const list = data.activities.filter((activity: any) => activity.id === userId);
-    return { list, count: list.length };
+const allActivities = this.getAll(); 
+
+    // 2. Filter for only this user's activities
+    const filteredList = allActivities.filter(act => act.userId === userId);
+
+    return {
+        list: filteredList,
+        count: filteredList.length
+    };
 }
 export const create  = (activity: any) => {
     const newActivity = {
