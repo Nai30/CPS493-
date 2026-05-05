@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { currentUser, token } from '../store/userStore.js'
+import { currentUser, token, API_URL } from '../store/userStore.js'
 
 // --- LOGIC ---
 const activities = ref([])
@@ -11,7 +11,7 @@ const editText = ref('')
 
 async function fetchActivities() {
   try {
-    const response = await fetch('http://localhost:3000/api/v1/activities/my-activities', {
+    const response = await fetch(`${API_URL}/activities/my-activities`, {
       headers: { 'Authorization': `Bearer ${token.value}` }
     })
     const result = await response.json()
@@ -29,7 +29,7 @@ async function addActivity() {
   if (newActivity.value.trim() === '') return
   isAddingLoading.value = true
   try {
-    const response = await fetch('http://localhost:3000/api/v1/activities', {
+    const response = await fetch(`${API_URL}/activities`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token.value}`,
@@ -56,7 +56,7 @@ async function addActivity() {
 
 async function deleteActivity(id) {
   try {
-    const response = await fetch(`http://localhost:3000/api/v1/activities/${id}`, {
+    const response = await fetch(`${API_URL}/activities/${id}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token.value}` }
     })

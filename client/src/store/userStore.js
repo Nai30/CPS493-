@@ -1,5 +1,7 @@
 import { ref } from 'vue'
 
+export const API_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:3000/api/v1';
+
 export const users = ref([])
 export const currentUser = ref(null) 
 export const token = ref(localStorage.getItem('token') || '');
@@ -10,12 +12,12 @@ export const isLoggingIn = ref(false);
 
 export async function fetchAllUsers() {
     try {
-        const response = await fetch('http://localhost:3000/api/v1/users', {
+        // Changed to backticks ``
+        const response = await fetch(`${API_URL}/users`, {
             headers: { 'Authorization': `Bearer ${token.value}` }
         });
         const result = await response.json();
         if (result.isSuccess) {
-            // ✅ Updates the reactive array
             users.value = result.data; 
         }
     } catch (err) {
@@ -29,7 +31,6 @@ export function setToken(newToken){
 }
 
 export function switchUser(id){
-    // ✅ MUST USE .value
     const found = users.value.find(u => u.id === id)
     if (found) {
         currentUser.value = found
@@ -41,7 +42,8 @@ export function switchUser(id){
 export async function performLogin() {
   isLoggingIn.value = true;
   try {
-    const response = await fetch('http://localhost:3000/api/v1/users/login', {
+    // Changed to backticks ``
+    const response = await fetch(`${API_URL}/users/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
@@ -54,11 +56,8 @@ export async function performLogin() {
 
     if (result.isSuccess) {
       setToken(result.data.token);
-      
-      // ✅ We need to fetch users first so our local list isn't empty
       await fetchAllUsers();
 
-      // ✅ Use .value to find the user that just logged in
       const foundUser = users.value.find(u => u.email === loginEmail.value);
       if (foundUser) {
           currentUser.value = foundUser;
@@ -81,7 +80,8 @@ export async function deleteUser(userId) {
     if (!confirm("Are you sure you want to delete this user?")) return;
 
     try {
-        const response = await fetch(`http://localhost:3000/api/v1/users/${userId}`, {
+        // Swapped localhost for API_URL
+        const response = await fetch(`${API_URL}/users/${userId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token.value}`,
@@ -92,7 +92,6 @@ export async function deleteUser(userId) {
         const result = await response.json();
 
         if (result.isSuccess) {
-            // ✅ Use .value
             const index = users.value.findIndex(u => u.id === userId);
             if (index !== -1) {
                 users.value.splice(index, 1);
@@ -107,7 +106,8 @@ export async function deleteUser(userId) {
 
 export async function updateUser (userId, updatedData) {
     try {
-        const response = await fetch(`http://localhost:3000/api/v1/users/${userId}`, {
+        // Swapped localhost for API_URL
+        const response = await fetch(`${API_URL}/users/${userId}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token.value}`,
@@ -119,10 +119,8 @@ export async function updateUser (userId, updatedData) {
         const result = await response.json();
 
         if (result.isSuccess) {
-            // ✅ Use .value
             const index = users.value.findIndex(u => u.id === userId);
             if (index !== -1) {
-                // Merge the new data into the existing user object
                 users.value[index] = { ...users.value[index], ...updatedData };
             }
         } else {
@@ -132,17 +130,18 @@ export async function updateUser (userId, updatedData) {
         console.error("Update failed:", err);
     }
 }
+
 export const friendsActivities = ref([]);
 
 export async function fetchFriendsActivities() {
-  
     if (!currentUser.value) {
         console.warn("No user logged in. Skipping friends feed fetch.");
         return;
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/api/v1/activities/friends/${currentUser.value.id}`, {
+        // Swapped localhost for API_URL
+        const response = await fetch(`${API_URL}/activities/friends/${currentUser.value.id}`, {
             headers: { 'Authorization': `Bearer ${token.value}` }
         });
         const result = await response.json();

@@ -1,11 +1,11 @@
 import { ref } from 'vue';
-import { token } from './userStore'; 
+import { token,API_URL } from './userStore'; 
 
 export const myActivities = ref([]);
 
 export async function fetchMyActivities() {
     try {
-        const response = await fetch('http://localhost:3000/api/v1/activities/my-activities', {
+        const response = await fetch(`${API_URL}/activities/my-activities`, {
             headers: { 'Authorization': `Bearer ${token.value}` }
         });
         const result = await response.json();
