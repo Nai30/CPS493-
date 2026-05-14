@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { currentUser, token, API_URL } from '../store/userStore.js'
+import { useInfiniteScroll } from '@vueuse/core'
+import { ref, useTemplateRef } from 'vue'
 
 // --- LOGIC ---
 const activities = ref([])
@@ -65,6 +67,31 @@ async function deleteActivity(id) {
       activities.value = activities.value.filter(a => a.id !== id)
     }
   } catch (error) { console.error("Failed to delete:", error) }
+}
+
+// --- INFINITE SCROLL ---
+const el = useTemplateRef('el')
+const data = ref([1, 2, 3, 4, 5, 6])
+
+const { reset } = useInfiniteScroll(
+  el,
+  () => {
+    // load more
+    data.value.push(...moreData)
+  },
+  {
+    distance: 10,
+    canLoadMore: () => {
+      // inidicate when there is no more content to load so onLoadMore stops triggering
+      // if (noMoreContent) return false
+      return true // for demo purposes
+    },
+  }
+)
+
+function resetList() {
+  data.value = []
+  reset()
 }
 </script>
 
