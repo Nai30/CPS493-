@@ -1,31 +1,46 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { computed, ref, onMounted, useTemplateRef } from 'vue'
 import { currentUser, token, API_URL } from '../store/userStore.js'
 import { useInfiniteScroll } from '@vueuse/core'
-import { ref, useTemplateRef } from 'vue'
+
 
 // --- LOGIC ---
-const activities = ref([])
+const displayedActivities = ref([]) // For infinite scroll
+const currentPage = ref(1)
+const pageSize = ref(5)
+const totalActivities = ref(0)
+const isLoading = ref(false)
 const isAddingLoading = ref(false)
 const newActivity = ref('')
 const editingId = ref(null)
 const editText = ref('')
+const hasMore = computed(() => displayedActivities.value.length < totalActivities.value)
 
-async function fetchActivities() {
+async function loadPage(page = 1) {
+  if (isLoading.value) return
+  isLoading.value = true
   try {
-    const response = await fetch(`${API_URL}/activities/my-activities`, {
+    const response = await fetch(`${API_URL}/activities/my-activities?page=${page}&limit=${pageSize.value}`, {
       headers: { 'Authorization': `Bearer ${token.value}` }
     })
     const result = await response.json()
     if (result.isSuccess) {
-      activities.value = result.data
+      if (page === 1) {
+        displayedActivities.value = result.data
+      } else {
+        displayedActivities.value.push(...result.data)
+      }
+      totalActivities.value = result.total
+      currentPage.value = page
     }
   } catch (error) {
     console.error("Failed to fetch:", error)
+  } finally {
+    isLoading.value = false
   }
 }
 
-onMounted(() => { fetchActivities() })
+onMounted(() => { loadPage(1) })
 
 async function addActivity() {
   if (newActivity.value.trim() === '') return
@@ -37,7 +52,7 @@ async function addActivity() {
         'Authorization': `Bearer ${token.value}`,
         'Content-Type': 'application/json'
       },
-      // ✅ Send the fields your backend expects
+   
       body: JSON.stringify({ 
         type: newActivity.value, 
         duration_min: 30, // Default value
@@ -48,12 +63,14 @@ async function addActivity() {
     })
     const result = await response.json()
     if (result.isSuccess) {
-      activities.value.unshift(result.data)
+      displayedActivities.value.unshift(result.data)
+      totalActivities.value += 1
       newActivity.value = ''
     }
   } finally {
     isAddingLoading.value = false
   }
+
 }
 
 async function deleteActivity(id) {
@@ -64,35 +81,26 @@ async function deleteActivity(id) {
     })
     const result = await response.json()
     if (result.isSuccess) {
-      activities.value = activities.value.filter(a => a.id !== id)
+      displayedActivities.value = displayedActivities.value.filter(a => a.id !== id)
+      totalActivities.value -= 1
     }
   } catch (error) { console.error("Failed to delete:", error) }
 }
 
 // --- INFINITE SCROLL ---
 const el = useTemplateRef('el')
-const data = ref([1, 2, 3, 4, 5, 6])
-
-const { reset } = useInfiniteScroll(
+//add reset 
+ useInfiniteScroll(
   el,
   () => {
-    // load more
-    data.value.push(...moreData)
+    loadPage(currentPage.value + 1)
   },
   {
     distance: 10,
-    canLoadMore: () => {
-      // inidicate when there is no more content to load so onLoadMore stops triggering
-      // if (noMoreContent) return false
-      return true // for demo purposes
-    },
+    canLoadMore: () => hasMore.value
   }
 )
 
-function resetList() {
-  data.value = []
-  reset()
-}
 </script>
 
 <template>
@@ -132,34 +140,92 @@ function resetList() {
             </div>
           </div>
 
-          <div v-if="activities.length > 0">
+          <div v-if="isLoading && displayedActivities.length === 0">
             <h3 class="label mb-4">Your Recent Movement</h3>
-            <div v-for="activity in activities" :key="activity.id" class="box activity-item p-4">
-              <article class="media">
-                <figure class="media-left">
-                  <p class="image is-48x48 has-background-primary-light is-rounded-container">
-                    <span class="icon is-medium has-text-primary mt-2">
-                      <i class="fas fa-running fa-lg"></i>
-                    </span>
-                  </p>
-                </figure>
-                <div class="media-content">
-                  <div class="content">
-                    <p>
-                      <strong class="is-size-5">{{ activity?.type }}</strong>
-                      <br />
-                      <small class="has-text-grey">
-                        Logged {{ new Date().toLocaleDateString() }} at {{ new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}
-                      </small>
+            <div class="activity-scroll-container">
+              <div v-for="n in pageSize" :key="'skeleton-' + n" class="box activity-item p-4">
+                <article class="media">
+                  <figure class="media-left">
+                    <p class="image is-48x48 has-background-grey-light is-rounded-container">
+                      <span class="icon is-medium has-text-grey mt-2">
+                        <i class="fas fa-running fa-lg"></i>
+                      </span>
                     </p>
+                  </figure>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <span class="skeleton-text"></span>
+                        <br />
+                        <small class="skeleton-text small"></small>
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div class="media-right">
-                  <button class="button is-white has-text-danger" @click="deleteActivity(activity.id)">
-                    <span class="icon is-small"><i class="fas fa-times"></i></span>
-                  </button>
-                </div>
-              </article>
+                  <div class="media-right">
+                    <button class="button is-white has-text-grey-light" disabled>
+                      <span class="icon is-small"><i class="fas fa-times"></i></span>
+                    </button>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div v-else-if="displayedActivities.length > 0">
+            <h3 class="label mb-4">Your Recent Movement</h3>
+            <div ref="el" class="activity-scroll-container">
+              <div v-for="activity in displayedActivities" :key="activity.id" class="box activity-item p-4">
+                <article class="media">
+                  <figure class="media-left">
+                    <p class="image is-48x48 has-background-primary-light is-rounded-container">
+                      <span class="icon is-medium has-text-primary mt-2">
+                        <i class="fas fa-running fa-lg"></i>
+                      </span>
+                    </p>
+                  </figure>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong class="is-size-5">{{ activity?.type }}</strong>
+                        <br />
+                        <small class="has-text-grey">
+                          Logged {{ new Date().toLocaleDateString() }} at {{ new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}
+                        </small>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="media-right">
+                    <button class="button is-white has-text-danger" @click="deleteActivity(activity.id)">
+                      <span class="icon is-small"><i class="fas fa-times"></i></span>
+                    </button>
+                  </div>
+                </article>
+              </div>
+              <div v-if="isLoading" v-for="n in pageSize" :key="'skeleton-' + n" class="box activity-item p-4">
+                <article class="media">
+                  <figure class="media-left">
+                    <p class="image is-48x48 has-background-grey-light is-rounded-container">
+                      <span class="icon is-medium has-text-grey mt-2">
+                        <i class="fas fa-running fa-lg"></i>
+                      </span>
+                    </p>
+                  </figure>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <span class="skeleton-text"></span>
+                        <br />
+                        <small class="skeleton-text small"></small>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="media-right">
+                    <button class="button is-white has-text-grey-light" disabled>
+                      <span class="icon is-small"><i class="fas fa-times"></i></span>
+                    </button>
+                  </div>
+                </article>
+              </div>
             </div>
           </div>
 
@@ -175,6 +241,12 @@ function resetList() {
 </template>
 
 <style scoped>
+.activity-scroll-container {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
 .activity-item {
   border-radius: 15px;
   transition: all 0.2s ease;
@@ -195,4 +267,23 @@ function resetList() {
 }
 
 .opacity-50 { opacity: 0.5; }
+
+.skeleton-text {
+  display: inline-block;
+  background: #f0f0f0;
+  height: 1em;
+  width: 120px;
+  border-radius: 4px;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-text.small {
+  width: 80px;
+  height: 0.8em;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
 </style>

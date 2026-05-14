@@ -22,7 +22,7 @@
     },
     {
       "id": 3,
-      "userId": 3,
+      "userId": 1,
       "date": "2026-04-13T06:30:00Z",
       "type": "yoga",
       "duration_min": 40,
@@ -120,12 +120,3066 @@
       "calories": 420
     },
     {
+      "id": 14,
+      "userId": 1,
+      "date": "2026-05-05T18:17:13Z",
       "type": "swim",
       "duration_min": 30,
-      "calories": 100,
-      "date": "2026-05-05T18:17:13.050Z",
+      "calories": 100
+    },
+    {
+      "id": 15,
       "userId": 1,
-      "id": 14
+      "date": "2026-04-14T07:30:00Z",
+      "type": "run",
+      "duration_min": 45,
+      "distance_km": 8,
+      "calories": 520
+    },
+    {
+      "id": 16,
+      "userId": 1,
+      "date": "2026-04-15T18:00:00Z",
+      "type": "cycling",
+      "duration_min": 50,
+      "distance_km": 20,
+      "calories": 650
+    },
+    {
+      "id": 17,
+      "userId": 1,
+      "date": "2026-04-16T07:15:00Z",
+      "type": "walk",
+      "duration_min": 35,
+      "distance_km": 3.5,
+      "calories": 160
+    },
+    {
+      "id": 18,
+      "userId": 1,
+      "date": "2026-04-17T19:00:00Z",
+      "type": "strength",
+      "duration_min": 55,
+      "distance_km": 0,
+      "calories": 300,
+      "sets": 7
+    },
+    {
+      "id": 19,
+      "userId": 1,
+      "date": "2026-04-18T06:30:00Z",
+      "type": "yoga",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 180
+    },
+    {
+      "id": 20,
+      "userId": 1,
+      "date": "2026-04-19T18:30:00Z",
+      "type": "swimming",
+      "duration_min": 40,
+      "distance_km": 1,
+      "calories": 320
+    },
+    {
+      "id": 21,
+      "userId": 1,
+      "date": "2026-04-20T07:45:00Z",
+      "type": "run",
+      "duration_min": 52,
+      "distance_km": 9,
+      "calories": 620
+    },
+    {
+      "id": 22,
+      "userId": 1,
+      "date": "2026-04-21T19:15:00Z",
+      "type": "cycling",
+      "duration_min": 60,
+      "distance_km": 24,
+      "calories": 780
+    },
+    {
+      "id": 23,
+      "userId": 1,
+      "date": "2026-04-22T08:00:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 24,
+      "userId": 1,
+      "date": "2026-04-23T18:00:00Z",
+      "type": "yoga",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 165
+    },
+    {
+      "id": 25,
+      "userId": 1,
+      "date": "2026-04-24T07:30:00Z",
+      "type": "walk",
+      "duration_min": 40,
+      "distance_km": 3.8,
+      "calories": 170
+    },
+    {
+      "id": 26,
+      "userId": 1,
+      "date": "2026-04-25T19:00:00Z",
+      "type": "run",
+      "duration_min": 55,
+      "distance_km": 11,
+      "calories": 820
+    },
+    {
+      "id": 27,
+      "userId": 1,
+      "date": "2026-04-26T07:00:00Z",
+      "type": "swimming",
+      "duration_min": 48,
+      "distance_km": 1.3,
+      "calories": 390
+    },
+    {
+      "id": 28,
+      "userId": 1,
+      "date": "2026-04-27T18:30:00Z",
+      "type": "cycling",
+      "duration_min": 65,
+      "distance_km": 27,
+      "calories": 880
+    },
+    {
+      "id": 29,
+      "userId": 1,
+      "date": "2026-04-28T08:15:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 290,
+      "sets": 6
+    },
+    {
+      "id": 30,
+      "userId": 1,
+      "date": "2026-04-29T19:30:00Z",
+      "type": "yoga",
+      "duration_min": 55,
+      "distance_km": 0,
+      "calories": 190
+    },
+    {
+      "id": 31,
+      "userId": 1,
+      "date": "2026-04-30T07:45:00Z",
+      "type": "run",
+      "duration_min": 60,
+      "distance_km": 13,
+      "calories": 950
+    },
+    {
+      "id": 32,
+      "userId": 1,
+      "date": "2026-05-01T18:00:00Z",
+      "type": "walk",
+      "duration_min": 42,
+      "distance_km": 4.2,
+      "calories": 190
+    },
+    {
+      "id": 33,
+      "userId": 1,
+      "date": "2026-05-02T07:15:00Z",
+      "type": "swimming",
+      "duration_min": 45,
+      "distance_km": 1.2,
+      "calories": 360
+    },
+    {
+      "id": 34,
+      "userId": 1,
+      "date": "2026-05-03T19:00:00Z",
+      "type": "strength",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 310,
+      "sets": 7
+    },
+    {
+      "id": 35,
+      "userId": 1,
+      "date": "2026-05-04T08:30:00Z",
+      "type": "cycling",
+      "duration_min": 58,
+      "distance_km": 23,
+      "calories": 750
+    },
+    {
+      "id": 36,
+      "userId": 1,
+      "date": "2026-05-05T18:45:00Z",
+      "type": "run",
+      "duration_min": 48,
+      "distance_km": 8.5,
+      "calories": 610
+    },
+    {
+      "id": 37,
+      "userId": 1,
+      "date": "2026-05-06T07:20:00Z",
+      "type": "yoga",
+      "duration_min": 60,
+      "distance_km": 0,
+      "calories": 210
+    },
+    {
+      "id": 38,
+      "userId": 1,
+      "date": "2026-05-07T19:15:00Z",
+      "type": "swimming",
+      "duration_min": 50,
+      "distance_km": 1.5,
+      "calories": 400
+    },
+    {
+      "id": 39,
+      "userId": 1,
+      "date": "2026-05-08T08:00:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 270,
+      "sets": 6
+    },
+    {
+      "id": 40,
+      "userId": 1,
+      "date": "2026-05-09T18:30:00Z",
+      "type": "cycling",
+      "duration_min": 70,
+      "distance_km": 30,
+      "calories": 950
+    },
+    {
+      "id": 41,
+      "userId": 2,
+      "date": "2026-04-14T07:00:00Z",
+      "type": "strength",
+      "duration_min": 42,
+      "distance_km": 0,
+      "calories": 240,
+      "sets": 5
+    },
+    {
+      "id": 42,
+      "userId": 2,
+      "date": "2026-04-15T18:30:00Z",
+      "type": "yoga",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 170
+    },
+    {
+      "id": 43,
+      "userId": 2,
+      "date": "2026-04-16T07:30:00Z",
+      "type": "swimming",
+      "duration_min": 50,
+      "distance_km": 1.4,
+      "calories": 380
+    },
+    {
+      "id": 44,
+      "userId": 2,
+      "date": "2026-04-17T19:00:00Z",
+      "type": "cycling",
+      "duration_min": 55,
+      "distance_km": 23,
+      "calories": 750
+    },
+    {
+      "id": 45,
+      "userId": 2,
+      "date": "2026-04-18T08:15:00Z",
+      "type": "run",
+      "duration_min": 48,
+      "distance_km": 8.5,
+      "calories": 620
+    },
+    {
+      "id": 46,
+      "userId": 2,
+      "date": "2026-04-19T18:00:00Z",
+      "type": "walk",
+      "duration_min": 38,
+      "distance_km": 3.8,
+      "calories": 170
+    },
+    {
+      "id": 47,
+      "userId": 2,
+      "date": "2026-04-20T07:45:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 290,
+      "sets": 6
+    },
+    {
+      "id": 48,
+      "userId": 2,
+      "date": "2026-04-21T19:30:00Z",
+      "type": "yoga",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 180
+    },
+    {
+      "id": 49,
+      "userId": 2,
+      "date": "2026-04-22T08:00:00Z",
+      "type": "run",
+      "duration_min": 45,
+      "distance_km": 7.5,
+      "calories": 550
+    },
+    {
+      "id": 50,
+      "userId": 2,
+      "date": "2026-04-23T18:15:00Z",
+      "type": "cycling",
+      "duration_min": 65,
+      "distance_km": 27,
+      "calories": 880
+    },
+    {
+      "id": 51,
+      "userId": 2,
+      "date": "2026-04-24T07:30:00Z",
+      "type": "swimming",
+      "duration_min": 45,
+      "distance_km": 1.2,
+      "calories": 360
+    },
+    {
+      "id": 52,
+      "userId": 2,
+      "date": "2026-04-25T19:00:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 260,
+      "sets": 6
+    },
+    {
+      "id": 53,
+      "userId": 2,
+      "date": "2026-04-26T08:15:00Z",
+      "type": "run",
+      "duration_min": 52,
+      "distance_km": 9.2,
+      "calories": 720
+    },
+    {
+      "id": 54,
+      "userId": 2,
+      "date": "2026-04-27T18:45:00Z",
+      "type": "yoga",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 175
+    },
+    {
+      "id": 55,
+      "userId": 2,
+      "date": "2026-04-28T07:00:00Z",
+      "type": "cycling",
+      "duration_min": 58,
+      "distance_km": 24,
+      "calories": 780
+    },
+    {
+      "id": 56,
+      "userId": 2,
+      "date": "2026-04-29T19:15:00Z",
+      "type": "walk",
+      "duration_min": 42,
+      "distance_km": 4.2,
+      "calories": 190
+    },
+    {
+      "id": 57,
+      "userId": 2,
+      "date": "2026-04-30T08:30:00Z",
+      "type": "strength",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 250,
+      "sets": 5
+    },
+    {
+      "id": 58,
+      "userId": 2,
+      "date": "2026-05-01T18:00:00Z",
+      "type": "run",
+      "duration_min": 55,
+      "distance_km": 11,
+      "calories": 820
+    },
+    {
+      "id": 59,
+      "userId": 2,
+      "date": "2026-05-02T07:45:00Z",
+      "type": "swimming",
+      "duration_min": 48,
+      "distance_km": 1.3,
+      "calories": 390
+    },
+    {
+      "id": 60,
+      "userId": 2,
+      "date": "2026-05-03T19:00:00Z",
+      "type": "cycling",
+      "duration_min": 62,
+      "distance_km": 26,
+      "calories": 840
+    },
+    {
+      "id": 61,
+      "userId": 2,
+      "date": "2026-05-04T08:00:00Z",
+      "type": "run",
+      "duration_min": 50,
+      "distance_km": 8.8,
+      "calories": 640
+    },
+    {
+      "id": 62,
+      "userId": 2,
+      "date": "2026-05-05T18:30:00Z",
+      "type": "yoga",
+      "duration_min": 60,
+      "distance_km": 0,
+      "calories": 210
+    },
+    {
+      "id": 63,
+      "userId": 2,
+      "date": "2026-05-06T07:15:00Z",
+      "type": "strength",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 310,
+      "sets": 7
+    },
+    {
+      "id": 64,
+      "userId": 2,
+      "date": "2026-05-07T19:15:00Z",
+      "type": "run",
+      "duration_min": 65,
+      "distance_km": 14,
+      "calories": 1000
+    },
+    {
+      "id": 65,
+      "userId": 2,
+      "date": "2026-05-08T08:00:00Z",
+      "type": "walk",
+      "duration_min": 45,
+      "distance_km": 4.5,
+      "calories": 200
+    },
+    {
+      "id": 66,
+      "userId": 3,
+      "date": "2026-04-14T07:45:00Z",
+      "type": "yoga",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 180
+    },
+    {
+      "id": 67,
+      "userId": 3,
+      "date": "2026-04-15T18:00:00Z",
+      "type": "walk",
+      "duration_min": 35,
+      "distance_km": 3,
+      "calories": 140
+    },
+    {
+      "id": 68,
+      "userId": 3,
+      "date": "2026-04-16T07:30:00Z",
+      "type": "swimming",
+      "duration_min": 50,
+      "distance_km": 1.4,
+      "calories": 390
+    },
+    {
+      "id": 69,
+      "userId": 3,
+      "date": "2026-04-17T19:15:00Z",
+      "type": "run",
+      "duration_min": 45,
+      "distance_km": 8,
+      "calories": 570
+    },
+    {
+      "id": 70,
+      "userId": 3,
+      "date": "2026-04-18T08:00:00Z",
+      "type": "strength",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 260,
+      "sets": 5
+    },
+    {
+      "id": 71,
+      "userId": 3,
+      "date": "2026-04-19T18:30:00Z",
+      "type": "cycling",
+      "duration_min": 50,
+      "distance_km": 18,
+      "calories": 620
+    },
+    {
+      "id": 72,
+      "userId": 3,
+      "date": "2026-04-20T07:45:00Z",
+      "type": "yoga",
+      "duration_min": 55,
+      "distance_km": 0,
+      "calories": 190
+    },
+    {
+      "id": 73,
+      "userId": 3,
+      "date": "2026-04-21T19:00:00Z",
+      "type": "walk",
+      "duration_min": 40,
+      "distance_km": 3.5,
+      "calories": 160
+    },
+    {
+      "id": 74,
+      "userId": 3,
+      "date": "2026-04-22T08:15:00Z",
+      "type": "swimming",
+      "duration_min": 40,
+      "distance_km": 1,
+      "calories": 320
+    },
+    {
+      "id": 75,
+      "userId": 3,
+      "date": "2026-04-23T18:00:00Z",
+      "type": "run",
+      "duration_min": 42,
+      "distance_km": 7.2,
+      "calories": 520
+    },
+    {
+      "id": 76,
+      "userId": 3,
+      "date": "2026-04-24T07:30:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 285,
+      "sets": 6
+    },
+    {
+      "id": 77,
+      "userId": 3,
+      "date": "2026-04-25T19:15:00Z",
+      "type": "cycling",
+      "duration_min": 60,
+      "distance_km": 23,
+      "calories": 750
+    },
+    {
+      "id": 78,
+      "userId": 3,
+      "date": "2026-04-26T08:00:00Z",
+      "type": "yoga",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 180
+    },
+    {
+      "id": 79,
+      "userId": 3,
+      "date": "2026-04-27T18:30:00Z",
+      "type": "walk",
+      "duration_min": 38,
+      "distance_km": 3.2,
+      "calories": 150
+    },
+    {
+      "id": 80,
+      "userId": 3,
+      "date": "2026-04-28T07:45:00Z",
+      "type": "swimming",
+      "duration_min": 45,
+      "distance_km": 1.1,
+      "calories": 350
+    },
+    {
+      "id": 81,
+      "userId": 3,
+      "date": "2026-04-29T19:00:00Z",
+      "type": "run",
+      "duration_min": 50,
+      "distance_km": 9,
+      "calories": 650
+    },
+    {
+      "id": 82,
+      "userId": 3,
+      "date": "2026-04-30T08:30:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 83,
+      "userId": 3,
+      "date": "2026-05-01T18:00:00Z",
+      "type": "yoga",
+      "duration_min": 60,
+      "distance_km": 0,
+      "calories": 210
+    },
+    {
+      "id": 84,
+      "userId": 3,
+      "date": "2026-05-02T07:30:00Z",
+      "type": "cycling",
+      "duration_min": 58,
+      "distance_km": 24,
+      "calories": 780
+    },
+    {
+      "id": 85,
+      "userId": 3,
+      "date": "2026-05-03T19:15:00Z",
+      "type": "walk",
+      "duration_min": 42,
+      "distance_km": 3.8,
+      "calories": 170
+    },
+    {
+      "id": 86,
+      "userId": 3,
+      "date": "2026-05-04T08:00:00Z",
+      "type": "swimming",
+      "duration_min": 50,
+      "distance_km": 1.3,
+      "calories": 400
+    },
+    {
+      "id": 87,
+      "userId": 3,
+      "date": "2026-05-05T18:30:00Z",
+      "type": "strength",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 260,
+      "sets": 5
+    },
+    {
+      "id": 88,
+      "userId": 3,
+      "date": "2026-05-06T07:15:00Z",
+      "type": "run",
+      "duration_min": 48,
+      "distance_km": 8.5,
+      "calories": 610
+    },
+    {
+      "id": 89,
+      "userId": 3,
+      "date": "2026-05-07T19:00:00Z",
+      "type": "yoga",
+      "duration_min": 55,
+      "distance_km": 0,
+      "calories": 195
+    },
+    {
+      "id": 90,
+      "userId": 3,
+      "date": "2026-05-08T07:30:00Z",
+      "type": "cycling",
+      "duration_min": 52,
+      "distance_km": 20,
+      "calories": 650
+    },
+    {
+      "id": 91,
+      "userId": 4,
+      "date": "2026-04-14T07:30:00Z",
+      "type": "cycling",
+      "duration_min": 45,
+      "distance_km": 16,
+      "calories": 520
+    },
+    {
+      "id": 92,
+      "userId": 4,
+      "date": "2026-04-15T18:00:00Z",
+      "type": "strength",
+      "duration_min": 40,
+      "distance_km": 0,
+      "calories": 250,
+      "sets": 5
+    },
+    {
+      "id": 93,
+      "userId": 4,
+      "date": "2026-04-16T07:45:00Z",
+      "type": "yoga",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 160
+    },
+    {
+      "id": 94,
+      "userId": 4,
+      "date": "2026-04-17T19:15:00Z",
+      "type": "run",
+      "duration_min": 35,
+      "distance_km": 6,
+      "calories": 420
+    },
+    {
+      "id": 95,
+      "userId": 4,
+      "date": "2026-04-18T08:00:00Z",
+      "type": "swimming",
+      "duration_min": 40,
+      "distance_km": 0.9,
+      "calories": 320
+    },
+    {
+      "id": 96,
+      "userId": 4,
+      "date": "2026-04-19T18:30:00Z",
+      "type": "walk",
+      "duration_min": 40,
+      "distance_km": 3.5,
+      "calories": 160
+    },
+    {
+      "id": 97,
+      "userId": 4,
+      "date": "2026-04-20T07:00:00Z",
+      "type": "cycling",
+      "duration_min": 50,
+      "distance_km": 18,
+      "calories": 600
+    },
+    {
+      "id": 98,
+      "userId": 4,
+      "date": "2026-04-21T19:00:00Z",
+      "type": "strength",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 265,
+      "sets": 5
+    },
+    {
+      "id": 99,
+      "userId": 4,
+      "date": "2026-04-22T08:15:00Z",
+      "type": "yoga",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 175
+    },
+    {
+      "id": 100,
+      "userId": 4,
+      "date": "2026-04-23T18:00:00Z",
+      "type": "run",
+      "duration_min": 38,
+      "distance_km": 6.5,
+      "calories": 470
+    },
+    {
+      "id": 101,
+      "userId": 4,
+      "date": "2026-04-24T07:30:00Z",
+      "type": "swimming",
+      "duration_min": 45,
+      "distance_km": 1,
+      "calories": 360
+    },
+    {
+      "id": 102,
+      "userId": 4,
+      "date": "2026-04-25T19:15:00Z",
+      "type": "walk",
+      "duration_min": 35,
+      "distance_km": 3,
+      "calories": 140
+    },
+    {
+      "id": 103,
+      "userId": 4,
+      "date": "2026-04-26T08:00:00Z",
+      "type": "cycling",
+      "duration_min": 55,
+      "distance_km": 20,
+      "calories": 650
+    },
+    {
+      "id": 104,
+      "userId": 4,
+      "date": "2026-04-27T18:30:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 285,
+      "sets": 6
+    },
+    {
+      "id": 105,
+      "userId": 4,
+      "date": "2026-04-28T07:45:00Z",
+      "type": "yoga",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 170
+    },
+    {
+      "id": 106,
+      "userId": 4,
+      "date": "2026-04-29T19:00:00Z",
+      "type": "run",
+      "duration_min": 42,
+      "distance_km": 7,
+      "calories": 510
+    },
+    {
+      "id": 107,
+      "userId": 4,
+      "date": "2026-04-30T08:30:00Z",
+      "type": "swimming",
+      "duration_min": 40,
+      "distance_km": 0.9,
+      "calories": 320
+    },
+    {
+      "id": 108,
+      "userId": 4,
+      "date": "2026-05-01T18:00:00Z",
+      "type": "cycling",
+      "duration_min": 48,
+      "distance_km": 17,
+      "calories": 560
+    },
+    {
+      "id": 109,
+      "userId": 4,
+      "date": "2026-05-02T07:30:00Z",
+      "type": "walk",
+      "duration_min": 42,
+      "distance_km": 3.8,
+      "calories": 170
+    },
+    {
+      "id": 110,
+      "userId": 4,
+      "date": "2026-05-03T19:15:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 111,
+      "userId": 4,
+      "date": "2026-05-04T08:00:00Z",
+      "type": "yoga",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 185
+    },
+    {
+      "id": 112,
+      "userId": 4,
+      "date": "2026-05-05T18:30:00Z",
+      "type": "run",
+      "duration_min": 48,
+      "distance_km": 8,
+      "calories": 580
+    },
+    {
+      "id": 113,
+      "userId": 4,
+      "date": "2026-05-06T07:45:00Z",
+      "type": "swimming",
+      "duration_min": 45,
+      "distance_km": 1.1,
+      "calories": 350
+    },
+    {
+      "id": 114,
+      "userId": 4,
+      "date": "2026-05-07T19:00:00Z",
+      "type": "cycling",
+      "duration_min": 52,
+      "distance_km": 19,
+      "calories": 620
+    },
+    {
+      "id": 115,
+      "userId": 5,
+      "date": "2026-04-14T07:30:00Z",
+      "type": "walk",
+      "duration_min": 35,
+      "distance_km": 3,
+      "calories": 140
+    },
+    {
+      "id": 116,
+      "userId": 5,
+      "date": "2026-04-15T18:30:00Z",
+      "type": "yoga",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 180
+    },
+    {
+      "id": 117,
+      "userId": 5,
+      "date": "2026-04-16T07:45:00Z",
+      "type": "walk",
+      "duration_min": 35,
+      "distance_km": 3,
+      "calories": 140
+    },
+    {
+      "id": 118,
+      "userId": 5,
+      "date": "2026-04-17T19:00:00Z",
+      "type": "swimming",
+      "duration_min": 40,
+      "distance_km": 0.8,
+      "calories": 300
+    },
+    {
+      "id": 119,
+      "userId": 5,
+      "date": "2026-04-18T08:00:00Z",
+      "type": "cycling",
+      "duration_min": 45,
+      "distance_km": 15,
+      "calories": 480
+    },
+    {
+      "id": 120,
+      "userId": 5,
+      "date": "2026-04-19T18:15:00Z",
+      "type": "strength",
+      "duration_min": 40,
+      "distance_km": 0,
+      "calories": 240,
+      "sets": 5
+    },
+    {
+      "id": 121,
+      "userId": 5,
+      "date": "2026-04-20T07:30:00Z",
+      "type": "run",
+      "duration_min": 35,
+      "distance_km": 6,
+      "calories": 420
+    },
+    {
+      "id": 122,
+      "userId": 5,
+      "date": "2026-04-21T19:30:00Z",
+      "type": "yoga",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 165
+    },
+    {
+      "id": 123,
+      "userId": 5,
+      "date": "2026-04-22T08:00:00Z",
+      "type": "walk",
+      "duration_min": 38,
+      "distance_km": 3.2,
+      "calories": 150
+    },
+    {
+      "id": 124,
+      "userId": 5,
+      "date": "2026-04-23T18:30:00Z",
+      "type": "cycling",
+      "duration_min": 48,
+      "distance_km": 16,
+      "calories": 520
+    },
+    {
+      "id": 125,
+      "userId": 5,
+      "date": "2026-04-24T07:00:00Z",
+      "type": "swimming",
+      "duration_min": 42,
+      "distance_km": 0.9,
+      "calories": 330
+    },
+    {
+      "id": 126,
+      "userId": 5,
+      "date": "2026-04-25T19:15:00Z",
+      "type": "strength",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 260,
+      "sets": 5
+    },
+    {
+      "id": 127,
+      "userId": 5,
+      "date": "2026-04-26T08:00:00Z",
+      "type": "run",
+      "duration_min": 40,
+      "distance_km": 7,
+      "calories": 500
+    },
+    {
+      "id": 128,
+      "userId": 5,
+      "date": "2026-04-27T18:00:00Z",
+      "type": "yoga",
+      "duration_min": 55,
+      "distance_km": 0,
+      "calories": 190
+    },
+    {
+      "id": 129,
+      "userId": 5,
+      "date": "2026-04-28T07:30:00Z",
+      "type": "walk",
+      "duration_min": 40,
+      "distance_km": 3.5,
+      "calories": 160
+    },
+    {
+      "id": 130,
+      "userId": 5,
+      "date": "2026-04-29T19:00:00Z",
+      "type": "cycling",
+      "duration_min": 50,
+      "distance_km": 17,
+      "calories": 560
+    },
+    {
+      "id": 131,
+      "userId": 5,
+      "date": "2026-04-30T08:15:00Z",
+      "type": "swimming",
+      "duration_min": 45,
+      "distance_km": 1,
+      "calories": 360
+    },
+    {
+      "id": 132,
+      "userId": 5,
+      "date": "2026-05-01T18:30:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 133,
+      "userId": 5,
+      "date": "2026-05-02T07:45:00Z",
+      "type": "run",
+      "duration_min": 45,
+      "distance_km": 8,
+      "calories": 570
+    },
+    {
+      "id": 134,
+      "userId": 5,
+      "date": "2026-05-03T19:00:00Z",
+      "type": "yoga",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 180
+    },
+    {
+      "id": 135,
+      "userId": 5,
+      "date": "2026-05-04T08:00:00Z",
+      "type": "cycling",
+      "duration_min": 52,
+      "distance_km": 18,
+      "calories": 600
+    },
+    {
+      "id": 136,
+      "userId": 5,
+      "date": "2026-05-05T18:15:00Z",
+      "type": "walk",
+      "duration_min": 42,
+      "distance_km": 3.8,
+      "calories": 170
+    },
+    {
+      "id": 137,
+      "userId": 5,
+      "date": "2026-05-06T07:30:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 290,
+      "sets": 6
+    },
+    {
+      "id": 138,
+      "userId": 5,
+      "date": "2026-05-07T19:30:00Z",
+      "type": "run",
+      "duration_min": 50,
+      "distance_km": 9,
+      "calories": 650
+    },
+    {
+      "id": 139,
+      "userId": 5,
+      "date": "2026-05-08T08:00:00Z",
+      "type": "swimming",
+      "duration_min": 48,
+      "distance_km": 1.2,
+      "calories": 380
+    },
+    {
+      "id": 140,
+      "userId": 5,
+      "date": "2026-05-09T18:15:00Z",
+      "type": "yoga",
+      "duration_min": 60,
+      "distance_km": 0,
+      "calories": 210
+    },
+    {
+      "id": 141,
+      "userId": 6,
+      "date": "2026-04-14T07:30:00Z",
+      "type": "yoga",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 160
+    },
+    {
+      "id": 142,
+      "userId": 6,
+      "date": "2026-04-15T18:00:00Z",
+      "type": "run",
+      "duration_min": 32,
+      "distance_km": 5.5,
+      "calories": 400
+    },
+    {
+      "id": 143,
+      "userId": 6,
+      "date": "2026-04-16T07:00:00Z",
+      "type": "walk",
+      "duration_min": 45,
+      "distance_km": 4.2,
+      "calories": 190
+    },
+    {
+      "id": 144,
+      "userId": 6,
+      "date": "2026-04-17T19:30:00Z",
+      "type": "strength",
+      "duration_min": 40,
+      "distance_km": 0,
+      "calories": 240,
+      "sets": 5
+    },
+    {
+      "id": 145,
+      "userId": 6,
+      "date": "2026-04-18T08:00:00Z",
+      "type": "swimming",
+      "duration_min": 40,
+      "distance_km": 0.8,
+      "calories": 310
+    },
+    {
+      "id": 146,
+      "userId": 6,
+      "date": "2026-04-19T18:30:00Z",
+      "type": "run",
+      "duration_min": 35,
+      "distance_km": 6.2,
+      "calories": 450
+    },
+    {
+      "id": 147,
+      "userId": 6,
+      "date": "2026-04-20T07:45:00Z",
+      "type": "yoga",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 175
+    },
+    {
+      "id": 148,
+      "userId": 6,
+      "date": "2026-04-21T19:00:00Z",
+      "type": "cycling",
+      "duration_min": 45,
+      "distance_km": 15,
+      "calories": 500
+    },
+    {
+      "id": 149,
+      "userId": 6,
+      "date": "2026-04-22T08:00:00Z",
+      "type": "walk",
+      "duration_min": 40,
+      "distance_km": 3.8,
+      "calories": 170
+    },
+    {
+      "id": 150,
+      "userId": 6,
+      "date": "2026-04-23T18:15:00Z",
+      "type": "strength",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 260,
+      "sets": 5
+    },
+    {
+      "id": 151,
+      "userId": 6,
+      "date": "2026-04-24T07:30:00Z",
+      "type": "swimming",
+      "duration_min": 45,
+      "distance_km": 0.9,
+      "calories": 350
+    },
+    {
+      "id": 152,
+      "userId": 6,
+      "date": "2026-04-25T19:00:00Z",
+      "type": "run",
+      "duration_min": 40,
+      "distance_km": 7,
+      "calories": 510
+    },
+    {
+      "id": 153,
+      "userId": 6,
+      "date": "2026-04-26T08:00:00Z",
+      "type": "yoga",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 170
+    },
+    {
+      "id": 154,
+      "userId": 6,
+      "date": "2026-04-27T18:30:00Z",
+      "type": "cycling",
+      "duration_min": 50,
+      "distance_km": 17,
+      "calories": 560
+    },
+    {
+      "id": 155,
+      "userId": 6,
+      "date": "2026-04-28T07:45:00Z",
+      "type": "walk",
+      "duration_min": 42,
+      "distance_km": 4,
+      "calories": 180
+    },
+    {
+      "id": 156,
+      "userId": 6,
+      "date": "2026-04-29T19:15:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 157,
+      "userId": 6,
+      "date": "2026-04-30T08:00:00Z",
+      "type": "swimming",
+      "duration_min": 40,
+      "distance_km": 0.8,
+      "calories": 320
+    },
+    {
+      "id": 158,
+      "userId": 6,
+      "date": "2026-05-01T18:30:00Z",
+      "type": "run",
+      "duration_min": 45,
+      "distance_km": 7.8,
+      "calories": 580
+    },
+    {
+      "id": 159,
+      "userId": 6,
+      "date": "2026-05-02T07:00:00Z",
+      "type": "yoga",
+      "duration_min": 55,
+      "distance_km": 0,
+      "calories": 190
+    },
+    {
+      "id": 160,
+      "userId": 6,
+      "date": "2026-05-03T19:30:00Z",
+      "type": "cycling",
+      "duration_min": 52,
+      "distance_km": 18,
+      "calories": 600
+    },
+    {
+      "id": 161,
+      "userId": 6,
+      "date": "2026-05-04T08:15:00Z",
+      "type": "walk",
+      "distance_km": 3.8,
+      "duration_min": 40,
+      "calories": 170
+    },
+    {
+      "id": 162,
+      "userId": 6,
+      "date": "2026-05-05T18:00:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 290,
+      "sets": 6
+    },
+    {
+      "id": 163,
+      "userId": 6,
+      "date": "2026-05-06T07:30:00Z",
+      "type": "swimming",
+      "duration_min": 45,
+      "distance_km": 1,
+      "calories": 360
+    },
+    {
+      "id": 164,
+      "userId": 6,
+      "date": "2026-05-07T19:15:00Z",
+      "type": "run",
+      "duration_min": 48,
+      "distance_km": 8.5,
+      "calories": 620
+    },
+    {
+      "id": 165,
+      "userId": 6,
+      "date": "2026-05-08T08:00:00Z",
+      "type": "yoga",
+      "duration_min": 60,
+      "distance_km": 0,
+      "calories": 210
+    },
+    {
+      "id": 166,
+      "userId": 6,
+      "date": "2026-05-09T18:30:00Z",
+      "type": "cycling",
+      "duration_min": 55,
+      "distance_km": 20,
+      "calories": 650
+    },
+    {
+      "id": 167,
+      "userId": 6,
+      "date": "2026-05-10T07:00:00Z",
+      "type": "strength",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 310,
+      "sets": 7
+    },
+    {
+      "id": 168,
+      "userId": 1,
+      "date": "2026-05-11T07:00:00Z",
+      "type": "run",
+      "duration_min": 40,
+      "distance_km": 7,
+      "calories": 480
+    },
+    {
+      "id": 169,
+      "userId": 1,
+      "date": "2026-05-12T18:30:00Z",
+      "type": "cycling",
+      "duration_min": 55,
+      "distance_km": 22,
+      "calories": 720
+    },
+    {
+      "id": 170,
+      "userId": 1,
+      "date": "2026-05-13T06:45:00Z",
+      "type": "yoga",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 165
+    },
+    {
+      "id": 171,
+      "userId": 1,
+      "date": "2026-05-14T19:00:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 290,
+      "sets": 6
+    },
+    {
+      "id": 172,
+      "userId": 1,
+      "date": "2026-05-15T07:30:00Z",
+      "type": "swim",
+      "duration_min": 42,
+      "distance_km": 1.1,
+      "calories": 340
+    },
+    {
+      "id": 173,
+      "userId": 1,
+      "date": "2026-05-16T18:00:00Z",
+      "type": "run",
+      "duration_min": 48,
+      "distance_km": 8.5,
+      "calories": 610
+    },
+    {
+      "id": 174,
+      "userId": 1,
+      "date": "2026-05-17T06:15:00Z",
+      "type": "walk",
+      "duration_min": 38,
+      "distance_km": 3.6,
+      "calories": 165
+    },
+    {
+      "id": 175,
+      "userId": 1,
+      "date": "2026-05-18T19:30:00Z",
+      "type": "cycling",
+      "duration_min": 62,
+      "distance_km": 25,
+      "calories": 820
+    },
+    {
+      "id": 176,
+      "userId": 1,
+      "date": "2026-05-19T07:45:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 177,
+      "userId": 1,
+      "date": "2026-05-20T18:15:00Z",
+      "type": "yoga",
+      "duration_min": 55,
+      "distance_km": 0,
+      "calories": 190
+    },
+    {
+      "id": 178,
+      "userId": 1,
+      "date": "2026-05-21T06:30:00Z",
+      "type": "run",
+      "duration_min": 52,
+      "distance_km": 9.2,
+      "calories": 720
+    },
+    {
+      "id": 179,
+      "userId": 1,
+      "date": "2026-05-22T19:00:00Z",
+      "type": "swim",
+      "duration_min": 48,
+      "distance_km": 1.3,
+      "calories": 390
+    },
+    {
+      "id": 180,
+      "userId": 1,
+      "date": "2026-05-23T07:00:00Z",
+      "type": "cycling",
+      "duration_min": 58,
+      "distance_km": 24,
+      "calories": 780
+    },
+    {
+      "id": 181,
+      "userId": 1,
+      "date": "2026-05-24T18:45:00Z",
+      "type": "walk",
+      "duration_min": 42,
+      "distance_km": 4,
+      "calories": 180
+    },
+    {
+      "id": 182,
+      "userId": 1,
+      "date": "2026-05-25T06:20:00Z",
+      "type": "strength",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 310,
+      "sets": 7
+    },
+    {
+      "id": 183,
+      "userId": 1,
+      "date": "2026-05-26T19:15:00Z",
+      "type": "run",
+      "duration_min": 55,
+      "distance_km": 10,
+      "calories": 750
+    },
+    {
+      "id": 184,
+      "userId": 1,
+      "date": "2026-05-27T07:30:00Z",
+      "type": "yoga",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 180
+    },
+    {
+      "id": 185,
+      "userId": 1,
+      "date": "2026-05-28T18:00:00Z",
+      "type": "cycling",
+      "duration_min": 65,
+      "distance_km": 26,
+      "calories": 850
+    },
+    {
+      "id": 186,
+      "userId": 1,
+      "date": "2026-05-29T06:45:00Z",
+      "type": "swim",
+      "duration_min": 45,
+      "distance_km": 1.2,
+      "calories": 360
+    },
+    {
+      "id": 187,
+      "userId": 1,
+      "date": "2026-05-30T19:30:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 290,
+      "sets": 6
+    },
+    {
+      "id": 188,
+      "userId": 1,
+      "date": "2026-05-31T07:15:00Z",
+      "type": "run",
+      "duration_min": 50,
+      "distance_km": 9,
+      "calories": 650
+    },
+    {
+      "id": 189,
+      "userId": 1,
+      "date": "2026-06-01T18:30:00Z",
+      "type": "walk",
+      "duration_min": 40,
+      "distance_km": 3.8,
+      "calories": 170
+    },
+    {
+      "id": 190,
+      "userId": 1,
+      "date": "2026-06-02T06:00:00Z",
+      "type": "yoga",
+      "duration_min": 60,
+      "distance_km": 0,
+      "calories": 210
+    },
+    {
+      "id": 191,
+      "userId": 1,
+      "date": "2026-06-03T19:00:00Z",
+      "type": "cycling",
+      "duration_min": 70,
+      "distance_km": 28,
+      "calories": 920
+    },
+    {
+      "id": 192,
+      "userId": 1,
+      "date": "2026-06-04T07:45:00Z",
+      "type": "strength",
+      "duration_min": 55,
+      "distance_km": 0,
+      "calories": 320,
+      "sets": 7
+    },
+    {
+      "id": 193,
+      "userId": 1,
+      "date": "2026-06-05T18:15:00Z",
+      "type": "swim",
+      "duration_min": 50,
+      "distance_km": 1.4,
+      "calories": 400
+    },
+    {
+      "id": 194,
+      "userId": 1,
+      "date": "2026-06-06T06:30:00Z",
+      "type": "run",
+      "duration_min": 58,
+      "distance_km": 11,
+      "calories": 850
+    },
+    {
+      "id": 195,
+      "userId": 1,
+      "date": "2026-06-07T19:45:00Z",
+      "type": "cycling",
+      "duration_min": 60,
+      "distance_km": 25,
+      "calories": 820
+    },
+    {
+      "id": 196,
+      "userId": 1,
+      "date": "2026-06-08T07:00:00Z",
+      "type": "walk",
+      "duration_min": 45,
+      "distance_km": 4.2,
+      "calories": 190
+    },
+    {
+      "id": 197,
+      "userId": 1,
+      "date": "2026-06-09T18:00:00Z",
+      "type": "yoga",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 185
+    },
+    {
+      "id": 198,
+      "userId": 2,
+      "date": "2026-05-11T07:15:00Z",
+      "type": "run",
+      "duration_min": 42,
+      "distance_km": 7.5,
+      "calories": 550
+    },
+    {
+      "id": 199,
+      "userId": 2,
+      "date": "2026-05-12T18:00:00Z",
+      "type": "cycling",
+      "duration_min": 58,
+      "distance_km": 24,
+      "calories": 780
+    },
+    {
+      "id": 200,
+      "userId": 2,
+      "date": "2026-05-13T06:30:00Z",
+      "type": "strength",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 250,
+      "sets": 5
+    },
+    {
+      "id": 201,
+      "userId": 2,
+      "date": "2026-05-14T19:15:00Z",
+      "type": "yoga",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 175
+    },
+    {
+      "id": 202,
+      "userId": 2,
+      "date": "2026-05-15T07:45:00Z",
+      "type": "swim",
+      "duration_min": 48,
+      "distance_km": 1.3,
+      "calories": 390
+    },
+    {
+      "id": 203,
+      "userId": 2,
+      "date": "2026-05-16T18:30:00Z",
+      "type": "run",
+      "duration_min": 50,
+      "distance_km": 8.8,
+      "calories": 640
+    },
+    {
+      "id": 204,
+      "userId": 2,
+      "date": "2026-05-17T06:00:00Z",
+      "type": "walk",
+      "duration_min": 40,
+      "distance_km": 3.8,
+      "calories": 170
+    },
+    {
+      "id": 205,
+      "userId": 2,
+      "date": "2026-05-18T19:45:00Z",
+      "type": "cycling",
+      "duration_min": 62,
+      "distance_km": 26,
+      "calories": 840
+    },
+    {
+      "id": 206,
+      "userId": 2,
+      "date": "2026-05-19T07:30:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 290,
+      "sets": 6
+    },
+    {
+      "id": 207,
+      "userId": 2,
+      "date": "2026-05-20T18:00:00Z",
+      "type": "yoga",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 180
+    },
+    {
+      "id": 208,
+      "userId": 2,
+      "date": "2026-05-21T06:45:00Z",
+      "type": "run",
+      "duration_min": 55,
+      "distance_km": 10,
+      "calories": 750
+    },
+    {
+      "id": 209,
+      "userId": 2,
+      "date": "2026-05-22T19:30:00Z",
+      "type": "swim",
+      "duration_min": 45,
+      "distance_km": 1.2,
+      "calories": 360
+    },
+    {
+      "id": 210,
+      "userId": 2,
+      "date": "2026-05-23T07:00:00Z",
+      "type": "cycling",
+      "duration_min": 60,
+      "distance_km": 25,
+      "calories": 820
+    },
+    {
+      "id": 211,
+      "userId": 2,
+      "date": "2026-05-24T18:15:00Z",
+      "type": "walk",
+      "duration_min": 45,
+      "distance_km": 4.2,
+      "calories": 190
+    },
+    {
+      "id": 212,
+      "userId": 2,
+      "date": "2026-05-25T06:30:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 213,
+      "userId": 2,
+      "date": "2026-05-26T19:00:00Z",
+      "type": "run",
+      "duration_min": 58,
+      "distance_km": 11,
+      "calories": 850
+    },
+    {
+      "id": 214,
+      "userId": 2,
+      "date": "2026-05-27T07:45:00Z",
+      "type": "yoga",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 185
+    },
+    {
+      "id": 215,
+      "userId": 2,
+      "date": "2026-05-28T18:30:00Z",
+      "type": "cycling",
+      "duration_min": 65,
+      "distance_km": 27,
+      "calories": 880
+    },
+    {
+      "id": 216,
+      "userId": 2,
+      "date": "2026-05-29T06:15:00Z",
+      "type": "swim",
+      "duration_min": 50,
+      "distance_km": 1.4,
+      "calories": 400
+    },
+    {
+      "id": 217,
+      "userId": 2,
+      "date": "2026-05-30T19:45:00Z",
+      "type": "strength",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 310,
+      "sets": 7
+    },
+    {
+      "id": 218,
+      "userId": 2,
+      "date": "2026-05-31T07:00:00Z",
+      "type": "run",
+      "duration_min": 52,
+      "distance_km": 9.5,
+      "calories": 720
+    },
+    {
+      "id": 219,
+      "userId": 2,
+      "date": "2026-06-01T18:45:00Z",
+      "type": "walk",
+      "duration_min": 42,
+      "distance_km": 4,
+      "calories": 180
+    },
+    {
+      "id": 220,
+      "userId": 2,
+      "date": "2026-06-02T06:30:00Z",
+      "type": "yoga",
+      "duration_min": 55,
+      "distance_km": 0,
+      "calories": 190
+    },
+    {
+      "id": 221,
+      "userId": 2,
+      "date": "2026-06-03T19:15:00Z",
+      "type": "cycling",
+      "duration_min": 68,
+      "distance_km": 28,
+      "calories": 920
+    },
+    {
+      "id": 222,
+      "userId": 2,
+      "date": "2026-06-04T07:30:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 290,
+      "sets": 6
+    },
+    {
+      "id": 223,
+      "userId": 2,
+      "date": "2026-06-05T18:00:00Z",
+      "type": "swim",
+      "duration_min": 48,
+      "distance_km": 1.3,
+      "calories": 390
+    },
+    {
+      "id": 224,
+      "userId": 2,
+      "date": "2026-06-06T06:45:00Z",
+      "type": "run",
+      "duration_min": 60,
+      "distance_km": 12,
+      "calories": 900
+    },
+    {
+      "id": 225,
+      "userId": 2,
+      "date": "2026-06-07T19:30:00Z",
+      "type": "cycling",
+      "duration_min": 62,
+      "distance_km": 26,
+      "calories": 840
+    },
+    {
+      "id": 226,
+      "userId": 2,
+      "date": "2026-06-08T07:15:00Z",
+      "type": "walk",
+      "duration_min": 48,
+      "distance_km": 4.5,
+      "calories": 200
+    },
+    {
+      "id": 227,
+      "userId": 2,
+      "date": "2026-06-09T18:45:00Z",
+      "type": "yoga",
+      "duration_min": 58,
+      "distance_km": 0,
+      "calories": 205
+    },
+    {
+      "id": 228,
+      "userId": 3,
+      "date": "2026-05-11T08:00:00Z",
+      "type": "yoga",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 180
+    },
+    {
+      "id": 229,
+      "userId": 3,
+      "date": "2026-05-12T18:30:00Z",
+      "type": "walk",
+      "duration_min": 38,
+      "distance_km": 3.2,
+      "calories": 150
+    },
+    {
+      "id": 230,
+      "userId": 3,
+      "date": "2026-05-13T07:15:00Z",
+      "type": "swim",
+      "duration_min": 50,
+      "distance_km": 1.4,
+      "calories": 390
+    },
+    {
+      "id": 231,
+      "userId": 3,
+      "date": "2026-05-14T19:00:00Z",
+      "type": "run",
+      "duration_min": 45,
+      "distance_km": 8,
+      "calories": 570
+    },
+    {
+      "id": 232,
+      "userId": 3,
+      "date": "2026-05-15T06:45:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 233,
+      "userId": 3,
+      "date": "2026-05-16T18:15:00Z",
+      "type": "cycling",
+      "duration_min": 55,
+      "distance_km": 21,
+      "calories": 690
+    },
+    {
+      "id": 234,
+      "userId": 3,
+      "date": "2026-05-17T07:30:00Z",
+      "type": "yoga",
+      "duration_min": 55,
+      "distance_km": 0,
+      "calories": 190
+    },
+    {
+      "id": 235,
+      "userId": 3,
+      "date": "2026-05-18T19:45:00Z",
+      "type": "walk",
+      "duration_min": 42,
+      "distance_km": 3.8,
+      "calories": 170
+    },
+    {
+      "id": 236,
+      "userId": 3,
+      "date": "2026-05-19T08:00:00Z",
+      "type": "swim",
+      "duration_min": 45,
+      "distance_km": 1.1,
+      "calories": 350
+    },
+    {
+      "id": 237,
+      "userId": 3,
+      "date": "2026-05-20T18:30:00Z",
+      "type": "run",
+      "duration_min": 50,
+      "distance_km": 9,
+      "calories": 650
+    },
+    {
+      "id": 238,
+      "userId": 3,
+      "date": "2026-05-21T07:00:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 285,
+      "sets": 6
+    },
+    {
+      "id": 239,
+      "userId": 3,
+      "date": "2026-05-22T19:15:00Z",
+      "type": "yoga",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 170
+    },
+    {
+      "id": 240,
+      "userId": 3,
+      "date": "2026-05-23T06:30:00Z",
+      "type": "cycling",
+      "duration_min": 60,
+      "distance_km": 23,
+      "calories": 750
+    },
+    {
+      "id": 241,
+      "userId": 3,
+      "date": "2026-05-24T18:00:00Z",
+      "type": "swim",
+      "duration_min": 48,
+      "distance_km": 1.2,
+      "calories": 380
+    },
+    {
+      "id": 242,
+      "userId": 3,
+      "date": "2026-05-25T07:45:00Z",
+      "type": "run",
+      "duration_min": 48,
+      "distance_km": 8.5,
+      "calories": 610
+    },
+    {
+      "id": 243,
+      "userId": 3,
+      "date": "2026-05-26T19:30:00Z",
+      "type": "walk",
+      "duration_min": 40,
+      "distance_km": 3.6,
+      "calories": 165
+    },
+    {
+      "id": 244,
+      "userId": 3,
+      "date": "2026-05-27T08:15:00Z",
+      "type": "strength",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 300,
+      "sets": 7
+    },
+    {
+      "id": 245,
+      "userId": 3,
+      "date": "2026-05-28T18:45:00Z",
+      "type": "cycling",
+      "duration_min": 58,
+      "distance_km": 24,
+      "calories": 780
+    },
+    {
+      "id": 246,
+      "userId": 3,
+      "date": "2026-05-29T07:00:00Z",
+      "type": "yoga",
+      "duration_min": 60,
+      "distance_km": 0,
+      "calories": 210
+    },
+    {
+      "id": 247,
+      "userId": 3,
+      "date": "2026-05-30T19:00:00Z",
+      "type": "swim",
+      "duration_min": 50,
+      "distance_km": 1.3,
+      "calories": 400
+    },
+    {
+      "id": 248,
+      "userId": 3,
+      "date": "2026-05-31T06:30:00Z",
+      "type": "run",
+      "duration_min": 52,
+      "distance_km": 9.2,
+      "calories": 720
+    },
+    {
+      "id": 249,
+      "userId": 3,
+      "date": "2026-06-01T18:15:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 250,
+      "userId": 3,
+      "date": "2026-06-02T07:45:00Z",
+      "type": "cycling",
+      "duration_min": 62,
+      "distance_km": 25,
+      "calories": 820
+    },
+    {
+      "id": 251,
+      "userId": 3,
+      "date": "2026-06-03T19:30:00Z",
+      "type": "walk",
+      "duration_min": 45,
+      "distance_km": 4,
+      "calories": 180
+    },
+    {
+      "id": 252,
+      "userId": 3,
+      "date": "2026-06-04T08:00:00Z",
+      "type": "yoga",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 185
+    },
+    {
+      "id": 253,
+      "userId": 3,
+      "date": "2026-06-05T18:30:00Z",
+      "type": "swim",
+      "duration_min": 45,
+      "distance_km": 1.1,
+      "calories": 350
+    },
+    {
+      "id": 254,
+      "userId": 3,
+      "date": "2026-06-06T07:15:00Z",
+      "type": "run",
+      "duration_min": 55,
+      "distance_km": 10,
+      "calories": 750
+    },
+    {
+      "id": 255,
+      "userId": 3,
+      "date": "2026-06-07T19:45:00Z",
+      "type": "cycling",
+      "duration_min": 65,
+      "distance_km": 26,
+      "calories": 850
+    },
+    {
+      "id": 256,
+      "userId": 3,
+      "date": "2026-06-08T06:45:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 290,
+      "sets": 6
+    },
+    {
+      "id": 257,
+      "userId": 3,
+      "date": "2026-06-09T18:00:00Z",
+      "type": "yoga",
+      "duration_min": 58,
+      "distance_km": 0,
+      "calories": 205
+    },
+    {
+      "id": 258,
+      "userId": 4,
+      "date": "2026-05-11T07:30:00Z",
+      "type": "cycling",
+      "duration_min": 48,
+      "distance_km": 17,
+      "calories": 560
+    },
+    {
+      "id": 259,
+      "userId": 4,
+      "date": "2026-05-12T18:00:00Z",
+      "type": "strength",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 265,
+      "sets": 5
+    },
+    {
+      "id": 260,
+      "userId": 4,
+      "date": "2026-05-13T06:45:00Z",
+      "type": "yoga",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 170
+    },
+    {
+      "id": 261,
+      "userId": 4,
+      "date": "2026-05-14T19:15:00Z",
+      "type": "run",
+      "duration_min": 38,
+      "distance_km": 6.5,
+      "calories": 470
+    },
+    {
+      "id": 262,
+      "userId": 4,
+      "date": "2026-05-15T07:00:00Z",
+      "type": "swim",
+      "duration_min": 42,
+      "distance_km": 1,
+      "calories": 330
+    },
+    {
+      "id": 263,
+      "userId": 4,
+      "date": "2026-05-16T18:30:00Z",
+      "type": "walk",
+      "duration_min": 42,
+      "distance_km": 3.8,
+      "calories": 170
+    },
+    {
+      "id": 264,
+      "userId": 4,
+      "date": "2026-05-17T07:15:00Z",
+      "type": "cycling",
+      "duration_min": 52,
+      "distance_km": 19,
+      "calories": 620
+    },
+    {
+      "id": 265,
+      "userId": 4,
+      "date": "2026-05-18T19:00:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 266,
+      "userId": 4,
+      "date": "2026-05-19T06:30:00Z",
+      "type": "yoga",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 185
+    },
+    {
+      "id": 267,
+      "userId": 4,
+      "date": "2026-05-20T18:45:00Z",
+      "type": "run",
+      "duration_min": 45,
+      "distance_km": 7.5,
+      "calories": 550
+    },
+    {
+      "id": 268,
+      "userId": 4,
+      "date": "2026-05-21T07:45:00Z",
+      "type": "swim",
+      "duration_min": 45,
+      "distance_km": 1.1,
+      "calories": 350
+    },
+    {
+      "id": 269,
+      "userId": 4,
+      "date": "2026-05-22T19:30:00Z",
+      "type": "walk",
+      "duration_min": 38,
+      "distance_km": 3.4,
+      "calories": 155
+    },
+    {
+      "id": 270,
+      "userId": 4,
+      "date": "2026-05-23T08:00:00Z",
+      "type": "cycling",
+      "duration_min": 55,
+      "distance_km": 20,
+      "calories": 650
+    },
+    {
+      "id": 271,
+      "userId": 4,
+      "date": "2026-05-24T18:15:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 285,
+      "sets": 6
+    },
+    {
+      "id": 272,
+      "userId": 4,
+      "date": "2026-05-25T07:30:00Z",
+      "type": "yoga",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 180
+    },
+    {
+      "id": 273,
+      "userId": 4,
+      "date": "2026-05-26T19:45:00Z",
+      "type": "run",
+      "duration_min": 48,
+      "distance_km": 8,
+      "calories": 580
+    },
+    {
+      "id": 274,
+      "userId": 4,
+      "date": "2026-05-27T08:15:00Z",
+      "type": "swim",
+      "duration_min": 48,
+      "distance_km": 1.2,
+      "calories": 380
+    },
+    {
+      "id": 275,
+      "userId": 4,
+      "date": "2026-05-28T18:00:00Z",
+      "type": "cycling",
+      "duration_min": 50,
+      "distance_km": 18,
+      "calories": 600
+    },
+    {
+      "id": 276,
+      "userId": 4,
+      "date": "2026-05-29T07:45:00Z",
+      "type": "walk",
+      "duration_min": 45,
+      "distance_km": 4,
+      "calories": 180
+    },
+    {
+      "id": 277,
+      "userId": 4,
+      "date": "2026-05-30T19:15:00Z",
+      "type": "strength",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 300,
+      "sets": 7
+    },
+    {
+      "id": 278,
+      "userId": 4,
+      "date": "2026-05-31T08:00:00Z",
+      "type": "yoga",
+      "duration_min": 55,
+      "distance_km": 0,
+      "calories": 190
+    },
+    {
+      "id": 279,
+      "userId": 4,
+      "date": "2026-06-01T18:30:00Z",
+      "type": "run",
+      "duration_min": 50,
+      "distance_km": 9,
+      "calories": 650
+    },
+    {
+      "id": 280,
+      "userId": 4,
+      "date": "2026-06-02T07:15:00Z",
+      "type": "swim",
+      "duration_min": 45,
+      "distance_km": 1.1,
+      "calories": 350
+    },
+    {
+      "id": 281,
+      "userId": 4,
+      "date": "2026-06-03T19:00:00Z",
+      "type": "cycling",
+      "duration_min": 58,
+      "distance_km": 22,
+      "calories": 720
+    },
+    {
+      "id": 282,
+      "userId": 4,
+      "date": "2026-06-04T08:30:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 283,
+      "userId": 4,
+      "date": "2026-06-05T18:45:00Z",
+      "type": "yoga",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 185
+    },
+    {
+      "id": 284,
+      "userId": 4,
+      "date": "2026-06-06T07:00:00Z",
+      "type": "run",
+      "duration_min": 52,
+      "distance_km": 9.2,
+      "calories": 720
+    },
+    {
+      "id": 285,
+      "userId": 4,
+      "date": "2026-06-07T19:30:00Z",
+      "type": "swim",
+      "duration_min": 50,
+      "distance_km": 1.3,
+      "calories": 400
+    },
+    {
+      "id": 286,
+      "userId": 4,
+      "date": "2026-06-08T08:15:00Z",
+      "type": "walk",
+      "duration_min": 40,
+      "distance_km": 3.6,
+      "calories": 165
+    },
+    {
+      "id": 287,
+      "userId": 4,
+      "date": "2026-06-09T18:00:00Z",
+      "type": "cycling",
+      "duration_min": 60,
+      "distance_km": 23,
+      "calories": 750
+    },
+    {
+      "id": 288,
+      "userId": 5,
+      "date": "2026-05-11T07:45:00Z",
+      "type": "run",
+      "duration_min": 38,
+      "distance_km": 6.5,
+      "calories": 470
+    },
+    {
+      "id": 289,
+      "userId": 5,
+      "date": "2026-05-12T18:15:00Z",
+      "type": "yoga",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 185
+    },
+    {
+      "id": 290,
+      "userId": 5,
+      "date": "2026-05-13T07:30:00Z",
+      "type": "walk",
+      "duration_min": 40,
+      "distance_km": 3.5,
+      "calories": 160
+    },
+    {
+      "id": 291,
+      "userId": 5,
+      "date": "2026-05-14T19:00:00Z",
+      "type": "swim",
+      "duration_min": 42,
+      "distance_km": 0.9,
+      "calories": 330
+    },
+    {
+      "id": 292,
+      "userId": 5,
+      "date": "2026-05-15T08:00:00Z",
+      "type": "cycling",
+      "duration_min": 50,
+      "distance_km": 17,
+      "calories": 560
+    },
+    {
+      "id": 293,
+      "userId": 5,
+      "date": "2026-05-16T18:45:00Z",
+      "type": "strength",
+      "duration_min": 45,
+      "distance_km": 0,
+      "calories": 260,
+      "sets": 5
+    },
+    {
+      "id": 294,
+      "userId": 5,
+      "date": "2026-05-17T07:15:00Z",
+      "type": "run",
+      "duration_min": 42,
+      "distance_km": 7,
+      "calories": 510
+    },
+    {
+      "id": 295,
+      "userId": 5,
+      "date": "2026-05-18T19:30:00Z",
+      "type": "yoga",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 170
+    },
+    {
+      "id": 296,
+      "userId": 5,
+      "date": "2026-05-19T08:15:00Z",
+      "type": "walk",
+      "duration_min": 42,
+      "distance_km": 3.8,
+      "calories": 170
+    },
+    {
+      "id": 297,
+      "userId": 5,
+      "date": "2026-05-20T18:00:00Z",
+      "type": "cycling",
+      "duration_min": 52,
+      "distance_km": 18,
+      "calories": 600
+    },
+    {
+      "id": 298,
+      "userId": 5,
+      "date": "2026-05-21T07:45:00Z",
+      "type": "swim",
+      "duration_min": 45,
+      "distance_km": 1,
+      "calories": 360
+    },
+    {
+      "id": 299,
+      "userId": 5,
+      "date": "2026-05-22T19:15:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 300,
+      "userId": 5,
+      "date": "2026-05-23T08:00:00Z",
+      "type": "run",
+      "duration_min": 45,
+      "distance_km": 8,
+      "calories": 570
+    },
+    {
+      "id": 301,
+      "userId": 5,
+      "date": "2026-05-24T18:30:00Z",
+      "type": "yoga",
+      "duration_min": 55,
+      "distance_km": 0,
+      "calories": 190
+    },
+    {
+      "id": 302,
+      "userId": 5,
+      "date": "2026-05-25T07:30:00Z",
+      "type": "walk",
+      "duration_min": 45,
+      "distance_km": 4,
+      "calories": 180
+    },
+    {
+      "id": 303,
+      "userId": 5,
+      "date": "2026-05-26T19:45:00Z",
+      "type": "cycling",
+      "duration_min": 55,
+      "distance_km": 20,
+      "calories": 650
+    },
+    {
+      "id": 304,
+      "userId": 5,
+      "date": "2026-05-27T08:15:00Z",
+      "type": "swim",
+      "duration_min": 48,
+      "distance_km": 1.2,
+      "calories": 380
+    },
+    {
+      "id": 305,
+      "userId": 5,
+      "date": "2026-05-28T18:00:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 290,
+      "sets": 6
+    },
+    {
+      "id": 306,
+      "userId": 5,
+      "date": "2026-05-29T07:45:00Z",
+      "type": "run",
+      "duration_min": 50,
+      "distance_km": 9,
+      "calories": 650
+    },
+    {
+      "id": 307,
+      "userId": 5,
+      "date": "2026-05-30T19:00:00Z",
+      "type": "yoga",
+      "duration_min": 58,
+      "distance_km": 0,
+      "calories": 205
+    },
+    {
+      "id": 308,
+      "userId": 5,
+      "date": "2026-05-31T08:30:00Z",
+      "type": "cycling",
+      "duration_min": 58,
+      "distance_km": 22,
+      "calories": 720
+    },
+    {
+      "id": 309,
+      "userId": 5,
+      "date": "2026-06-01T18:15:00Z",
+      "type": "walk",
+      "duration_min": 40,
+      "distance_km": 3.6,
+      "calories": 165
+    },
+    {
+      "id": 310,
+      "userId": 5,
+      "date": "2026-06-02T07:00:00Z",
+      "type": "strength",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 310,
+      "sets": 7
+    },
+    {
+      "id": 311,
+      "userId": 5,
+      "date": "2026-06-03T19:30:00Z",
+      "type": "run",
+      "duration_min": 55,
+      "distance_km": 10,
+      "calories": 750
+    },
+    {
+      "id": 312,
+      "userId": 5,
+      "date": "2026-06-04T08:00:00Z",
+      "type": "swim",
+      "duration_min": 50,
+      "distance_km": 1.3,
+      "calories": 400
+    },
+    {
+      "id": 313,
+      "userId": 5,
+      "date": "2026-06-05T18:45:00Z",
+      "type": "yoga",
+      "duration_min": 60,
+      "distance_km": 0,
+      "calories": 210
+    },
+    {
+      "id": 314,
+      "userId": 5,
+      "date": "2026-06-06T07:30:00Z",
+      "type": "cycling",
+      "duration_min": 60,
+      "distance_km": 23,
+      "calories": 750
+    },
+    {
+      "id": 315,
+      "userId": 5,
+      "date": "2026-06-07T19:15:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 316,
+      "userId": 5,
+      "date": "2026-06-08T08:45:00Z",
+      "type": "run",
+      "duration_min": 48,
+      "distance_km": 8.5,
+      "calories": 610
+    },
+    {
+      "id": 317,
+      "userId": 5,
+      "date": "2026-06-09T18:30:00Z",
+      "type": "walk",
+      "duration_min": 42,
+      "distance_km": 3.8,
+      "calories": 170
+    },
+    {
+      "id": 318,
+      "userId": 6,
+      "date": "2026-05-11T08:15:00Z",
+      "type": "yoga",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 170
+    },
+    {
+      "id": 319,
+      "userId": 6,
+      "date": "2026-05-12T18:45:00Z",
+      "type": "run",
+      "duration_min": 38,
+      "distance_km": 6.5,
+      "calories": 470
+    },
+    {
+      "id": 320,
+      "userId": 6,
+      "date": "2026-05-13T07:30:00Z",
+      "type": "walk",
+      "duration_min": 45,
+      "distance_km": 4.2,
+      "calories": 190
+    },
+    {
+      "id": 321,
+      "userId": 6,
+      "date": "2026-05-14T19:00:00Z",
+      "type": "strength",
+      "duration_min": 42,
+      "distance_km": 0,
+      "calories": 245,
+      "sets": 5
+    },
+    {
+      "id": 322,
+      "userId": 6,
+      "date": "2026-05-15T08:00:00Z",
+      "type": "swim",
+      "duration_min": 42,
+      "distance_km": 0.9,
+      "calories": 330
+    },
+    {
+      "id": 323,
+      "userId": 6,
+      "date": "2026-05-16T18:30:00Z",
+      "type": "run",
+      "duration_min": 42,
+      "distance_km": 7.2,
+      "calories": 520
+    },
+    {
+      "id": 324,
+      "userId": 6,
+      "date": "2026-05-17T07:45:00Z",
+      "type": "yoga",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 185
+    },
+    {
+      "id": 325,
+      "userId": 6,
+      "date": "2026-05-18T19:15:00Z",
+      "type": "cycling",
+      "duration_min": 48,
+      "distance_km": 16,
+      "calories": 520
+    },
+    {
+      "id": 326,
+      "userId": 6,
+      "date": "2026-05-19T08:30:00Z",
+      "type": "walk",
+      "duration_min": 42,
+      "distance_km": 3.9,
+      "calories": 175
+    },
+    {
+      "id": 327,
+      "userId": 6,
+      "date": "2026-05-20T18:00:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 328,
+      "userId": 6,
+      "date": "2026-05-21T07:15:00Z",
+      "type": "swim",
+      "duration_min": 45,
+      "distance_km": 1,
+      "calories": 360
+    },
+    {
+      "id": 329,
+      "userId": 6,
+      "date": "2026-05-22T19:45:00Z",
+      "type": "run",
+      "duration_min": 45,
+      "distance_km": 8,
+      "calories": 570
+    },
+    {
+      "id": 330,
+      "userId": 6,
+      "date": "2026-05-23T08:00:00Z",
+      "type": "yoga",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 180
+    },
+    {
+      "id": 331,
+      "userId": 6,
+      "date": "2026-05-24T18:30:00Z",
+      "type": "cycling",
+      "duration_min": 52,
+      "distance_km": 18,
+      "calories": 600
+    },
+    {
+      "id": 332,
+      "userId": 6,
+      "date": "2026-05-25T07:45:00Z",
+      "type": "walk",
+      "duration_min": 40,
+      "distance_km": 3.7,
+      "calories": 168
+    },
+    {
+      "id": 333,
+      "userId": 6,
+      "date": "2026-05-26T19:00:00Z",
+      "type": "strength",
+      "duration_min": 50,
+      "distance_km": 0,
+      "calories": 290,
+      "sets": 6
+    },
+    {
+      "id": 334,
+      "userId": 6,
+      "date": "2026-05-27T08:15:00Z",
+      "type": "swim",
+      "duration_min": 42,
+      "distance_km": 0.9,
+      "calories": 330
+    },
+    {
+      "id": 335,
+      "userId": 6,
+      "date": "2026-05-28T18:45:00Z",
+      "type": "run",
+      "duration_min": 48,
+      "distance_km": 8.5,
+      "calories": 610
+    },
+    {
+      "id": 336,
+      "userId": 6,
+      "date": "2026-05-29T07:30:00Z",
+      "type": "yoga",
+      "duration_min": 55,
+      "distance_km": 0,
+      "calories": 190
+    },
+    {
+      "id": 337,
+      "userId": 6,
+      "date": "2026-05-30T19:15:00Z",
+      "type": "cycling",
+      "duration_min": 55,
+      "distance_km": 20,
+      "calories": 650
+    },
+    {
+      "id": 338,
+      "userId": 6,
+      "date": "2026-05-31T08:00:00Z",
+      "type": "walk",
+      "duration_min": 43,
+      "distance_km": 4,
+      "calories": 178
+    },
+    {
+      "id": 339,
+      "userId": 6,
+      "date": "2026-06-01T18:30:00Z",
+      "type": "strength",
+      "duration_min": 52,
+      "distance_km": 0,
+      "calories": 310,
+      "sets": 7
+    },
+    {
+      "id": 340,
+      "userId": 6,
+      "date": "2026-06-02T07:45:00Z",
+      "type": "swim",
+      "duration_min": 45,
+      "distance_km": 1,
+      "calories": 360
+    },
+    {
+      "id": 341,
+      "userId": 6,
+      "date": "2026-06-03T19:00:00Z",
+      "type": "run",
+      "duration_min": 50,
+      "distance_km": 9,
+      "calories": 650
+    },
+    {
+      "id": 342,
+      "userId": 6,
+      "date": "2026-06-04T08:15:00Z",
+      "type": "yoga",
+      "duration_min": 58,
+      "distance_km": 0,
+      "calories": 205
+    },
+    {
+      "id": 343,
+      "userId": 6,
+      "date": "2026-06-05T18:45:00Z",
+      "type": "cycling",
+      "duration_min": 58,
+      "distance_km": 22,
+      "calories": 720
+    },
+    {
+      "id": 344,
+      "userId": 6,
+      "date": "2026-06-06T07:30:00Z",
+      "type": "strength",
+      "duration_min": 48,
+      "distance_km": 0,
+      "calories": 275,
+      "sets": 6
+    },
+    {
+      "id": 345,
+      "userId": 6,
+      "date": "2026-06-07T19:15:00Z",
+      "type": "swim",
+      "duration_min": 48,
+      "distance_km": 1.1,
+      "calories": 380
+    },
+    {
+      "id": 346,
+      "userId": 6,
+      "date": "2026-06-08T08:00:00Z",
+      "type": "run",
+      "duration_min": 52,
+      "distance_km": 9.2,
+      "calories": 720
+    },
+    {
+      "id": 347,
+      "userId": 6,
+      "date": "2026-06-09T18:30:00Z",
+      "type": "yoga",
+      "duration_min": 60,
+      "distance_km": 0,
+      "calories": 210
     }
   ]
 }

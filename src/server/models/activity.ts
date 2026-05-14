@@ -13,7 +13,7 @@ const saveToFile = () => {
 
 export interface Activity {
     id: number;
-    userId: number; // 👈 Make sure this is in your interface!
+    userId: number; 
     description?: string;
     duration_min: number;
     calories: number;
@@ -27,13 +27,18 @@ export const getAll = () => {
     return { list: data.activities, count: data.activities.length };
 };
 
-export const getByUserId = (userId: number) => {
-    // Access the array directly from the 'data' object we required
-    const filteredList = data.activities.filter((act: any) => act.userId === userId);
+export const getByUserId = (userId: number, page = 1, limit = 5) => {
+    const filteredList = data.activities
+        .filter((act: any) => act.userId === userId)
+        .sort((a: any, b: any) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+
+    const total = filteredList.length;
+    const startIndex = (page - 1) * limit;
+    const paginated = filteredList.slice(startIndex, startIndex + limit);
 
     return {
-        list: filteredList,
-        count: filteredList.length
+        list: paginated,
+        count: total
     };
 }
 

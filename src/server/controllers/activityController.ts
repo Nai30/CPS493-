@@ -32,13 +32,17 @@ app.get("/", (req, res) => {
 })
 .get("/my-activities", (req, res) => {
     // The bouncer (authorize) put the user info into req.user
-    const userId = (req as any).user.id; 
-    const { list, count } = model.getByUserId(userId);
+    const userId = (req as any).user.id;
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 5;
+    const { list, count } = model.getByUserId(userId, page, limit);
     
     res.send({
         data: list,
         isSuccess: true,
-        total: count
+        total: count,
+        page,
+        limit
     });
 })
 //duplicate? is it possible to have two get routes with the same path? if not, should we change the path for one of them? j
