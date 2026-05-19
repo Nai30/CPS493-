@@ -36,14 +36,14 @@ app.get("/", (req, res) => {
     const page = Number(req.query.page) || 1;
     const limit = Number(req.query.limit) || 5;
     const { list, count } = model.getByUserId(userId, page, limit);
-  setTimeout(() => { // Simulate delay for testing
+ 
         const response: DataListEnvelope<any> = {
             data: list,
             isSuccess: true,
             total: count
         };
         res.send(response);
-        }, 10000); // 10000ms delay
+
 
 })
 //duplicate? is it possible to have two get routes with the same path? if not, should we change the path for one of them? j
