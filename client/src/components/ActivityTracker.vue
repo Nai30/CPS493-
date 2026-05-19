@@ -211,7 +211,7 @@ const el = ref(null)
                 </article>
               </div>
 
-              //if is loading more 
+    
               <div v-if="isLoading" v-for="n in pageSize" :key="'append-skeleton-' + n" class="box activity-item p-4 opacity-50">
                 <article class="media">
                   <figure class="media-left">
