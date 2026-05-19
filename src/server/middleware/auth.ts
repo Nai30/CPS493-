@@ -1,8 +1,15 @@
 import { Request, Response, NextFunction } from "express";
+import { User } from "../types/index";
 import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "change-me-later";
-
+declare global {
+    namespace Express {
+        interface Request {
+            user?: User
+        }
+    }
+}
 export function authorize(req: Request, res: Response, next: NextFunction) {
     // 1. Get the token from the "Authorization" header
     // It usually looks like: "Bearer [token_string]"
@@ -31,5 +38,35 @@ export function authorize(req: Request, res: Response, next: NextFunction) {
             isSuccess: false, 
             message: "Invalid or expired token." 
         });
+    }
+}
+export function requireAuth(role?: string, userId?: number) {
+    return (req: Request, res: Response, next: NextFunction) => {
+        if (!req.user) {
+            return res.status(401).send({
+                data: null,
+                isSuccess: false,
+                message: "You must log in to access this resource",
+            })
+        }
+
+        if (role && req.user.role !== role) {
+            return res.status(403).send({
+                data: null,
+                isSuccess: false,
+                message:
+                    "You do not have the required role to access this resource",
+            })
+        }
+
+        if (userId && req.user.id !== userId) {
+            return res.status(403).send({
+                data: null,
+                isSuccess: false,
+                message: "You do not have permission to access this resource",
+            })
+        }
+
+        return next()
     }
 }

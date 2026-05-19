@@ -2,6 +2,8 @@ export type DataEnvelope<T> = {
     data: T
     isSuccess: boolean
     message?: string
+    page?: number
+    limit?: number
 }
 
 export type DataListEnvelope<T> = DataEnvelope<T[]> & {

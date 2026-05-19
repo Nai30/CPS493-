@@ -4,7 +4,7 @@ import { currentUser, token, API_URL } from '../store/userStore.js'
 import { useInfiniteScroll } from '@vueuse/core'
 
 
-// --- LOGIC ---
+
 const displayedActivities = ref([]) // For infinite scroll
 const currentPage = ref(1)
 const pageSize = ref(5)
@@ -88,12 +88,14 @@ async function deleteActivity(id) {
 }
 
 // --- INFINITE SCROLL ---
-const el = useTemplateRef('el')
-//add reset 
+const el = ref(null)
+ 
  useInfiniteScroll(
   el,
   () => {
+    if(hasMore.value&& !isLoading.value){
     loadPage(currentPage.value + 1)
+    }
   },
   {
     distance: 10,
@@ -139,11 +141,18 @@ const el = useTemplateRef('el')
               </div>
             </div>
           </div>
+          <div class="container p-4">
+            <div class="level mb-2">
+              <div class="level-left">
+                <p class="subtitle is-6 has-text-grey">Showing {{ displayedActivities.length }} of {{ totalActivities }}</p>
+              </div>
+            </div>
+          </div>
 
           <div v-if="isLoading && displayedActivities.length === 0">
             <h3 class="label mb-4">Your Recent Movement</h3>
             <div class="activity-scroll-container">
-              <div v-for="n in pageSize" :key="'skeleton-' + n" class="box activity-item p-4">
+              <div v-for="n in pageSize" :key="'initial-skeleton-' + n" class="box activity-item p-4">
                 <article class="media">
                   <figure class="media-left">
                     <p class="image is-48x48 has-background-grey-light is-rounded-container">
@@ -157,7 +166,7 @@ const el = useTemplateRef('el')
                       <p>
                         <span class="skeleton-text"></span>
                         <br />
-                        <small class="skeleton-text small"></small>
+                        <span class="skeleton-text small"></span>
                       </p>
                     </div>
                   </div>
@@ -189,7 +198,7 @@ const el = useTemplateRef('el')
                         <strong class="is-size-5">{{ activity?.type }}</strong>
                         <br />
                         <small class="has-text-grey">
-                          Logged {{ new Date().toLocaleDateString() }} at {{ new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}
+                          Logged {{activity.data ? new Date(activity.date).toLocaleDateString() : new Date().toLocaleDateString()}}
                         </small>
                       </p>
                     </div>
@@ -201,7 +210,9 @@ const el = useTemplateRef('el')
                   </div>
                 </article>
               </div>
-              <div v-if="isLoading" v-for="n in pageSize" :key="'skeleton-' + n" class="box activity-item p-4">
+
+              //if is loading more 
+              <div v-if="isLoading" v-for="n in pageSize" :key="'append-skeleton-' + n" class="box activity-item p-4 opacity-50">
                 <article class="media">
                   <figure class="media-left">
                     <p class="image is-48x48 has-background-grey-light is-rounded-container">
@@ -269,16 +280,17 @@ const el = useTemplateRef('el')
 .opacity-50 { opacity: 0.5; }
 
 .skeleton-text {
-  display: inline-block;
+  display: block;
   background: #f0f0f0;
-  height: 1em;
-  width: 120px;
+  height: 12px;
+  width: 70px;
+  margin-bottom: 0.5rem;
   border-radius: 4px;
   animation: skeleton-pulse 1.5s ease-in-out infinite;
 }
 
 .skeleton-text.small {
-  width: 80px;
+  width: 40px;
   height: 0.8em;
 }
 

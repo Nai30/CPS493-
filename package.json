@@ -13,6 +13,7 @@
     "@vue/cli": "^4.2.2",
     "@vueuse/core": "^14.3.0",
     "bulma": "^1.0.4",
+    "cache-loader": "^4.1.0",
     "chart.js": "^4.5.1",
     "core-js": "^3.8.3",
     "dotenv": "^17.4.2",
