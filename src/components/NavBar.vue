@@ -39,9 +39,9 @@ import { currentUser, switchUser, users } from '../store/userStore.js';
           <router-link class="navbar-item" to="/personal">
             Personal
           </router-link>
-          <a class="navbar-item is-selected">
+          <router-link class="navbar-item is-selected" to="/friends">
             Friends
-          </a>
+          </router-link>
           <router-link class="navbar-item" to="/stats">
             Statistics
           </router-link>
