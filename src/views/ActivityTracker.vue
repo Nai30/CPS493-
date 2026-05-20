@@ -49,10 +49,19 @@ function cancelEdit() {
 </script>
 
 <template>
-  <div class="columns is-multiline pt-6">
+  <div class="columns is-multiline is-centered pt-6">
     <div class="column is-half" v-for="activity in activities" :key="activity.id">
-      <div class="box">
+      <div class="box p-5 shadow-sm">
         <article class="media">
+
+          <div class="media-left">
+            <figure class="image is-48x48 has-background-link-light is-rounded is-flex is-justify-content-center is-align-items-center" style="border-radius: 50%;">
+              <span class="icon has-text-link">
+                <i class="fas fa-running fa-lg"></i>
+              </span>
+            </figure>
+          </div>
+
           <div class="media-content">
             <div class="content">
               <p>
@@ -69,22 +78,44 @@ function cancelEdit() {
                   <button class="button is-small is-danger" @click="deleteActivity(activity.id)">Delete</button>
                 </span>
               </p>
+
+              <div v-if="editingId === activity.id" class="field has-addons mt-2">
+                <div class="control is-expanded">
+                  <input v-model="editText" class="input is-small" />
+                </div>
+                <div class="control">
+                  <button class="button is-small is-success" @click="saveEdit(activity.id)">Save</button>
+                </div>
+                <div class="control">
+                  <button class="button is-small is-light" @click="cancelEdit">Cancel</button>
+                </div>
+              </div>
+          
+              
             </div>
           </div>
         </article>
       </div>
     </div>
-
-    <!-- Add new activity box -->
-    <div class="column is-half">
-      <div class="box">
-        <input
-          v-model="newActivity"
-          class="input"
-          placeholder="New activity"
-          @keyup.enter="addActivity"
-        />
-        <button class="button is-primary mt-2" @click="addActivity">Add Activity</button>
+ <div class="column is-half is-offset-one-third">
+      <div class="box p-5 style-input-box" style="border: 2px dashed #3273dc30; background-color: #fafafa;">
+        <p class="heading has-text-link has-text-weight-bold mb-3 is-size-6">Track a new session</p>
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <input
+              v-model="newActivity"
+              class="input"
+              placeholder="What workout did you conquer today?"
+              @keyup.enter="addActivity"
+            />
+          </div>
+          <div class="control">
+            <button class="button is-link" @click="addActivity">
+              <span class="icon is-small"><i class="fas fa-plus"></i></span>
+              <span>Add</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -97,5 +128,8 @@ function cancelEdit() {
 button {
   margin-left: 0.25rem;
   margin-top: 0.25rem;
+}
+.style-input-box {
+  margin: 0 auto;
 }
 </style>
