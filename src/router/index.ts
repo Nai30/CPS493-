@@ -3,6 +3,7 @@ import Home from '@/views/HomePage.vue'
 import Admin from '@/views/AdminView.vue'
 import ActivityTracker from '@/views/ActivityTracker.vue'
 import UserStats from '@/views/UserStats.vue'
+import FriendsActivity from '@/views/FriendsActivity.vue'
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
    path: '/stats',
     name: 'Statistics',
     component: UserStats
+  },
+  {
+    path: '/friends',
+    name: 'Friends',
+    component: FriendsActivity
   }
 ]
 
