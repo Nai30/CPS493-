@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref, onMounted, useTemplateRef } from 'vue'
 import { currentUser, token, API_URL } from '../store/userStore.js'
+import {deleteActivity, addActivity} from '../store/activityStore.js'
 import { useInfiniteScroll } from '@vueuse/core'
 
 
@@ -42,50 +43,7 @@ async function loadPage(page = 1) {
 
 onMounted(() => { loadPage(1) })
 
-async function addActivity() {
-  if (newActivity.value.trim() === '') return
-  isAddingLoading.value = true
-  try {
-    const response = await fetch(`${API_URL}/activities`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${token.value}`,
-        'Content-Type': 'application/json'
-      },
-   
-      body: JSON.stringify({ 
-        type: newActivity.value, 
-        duration_min: 30, // Default value
-        calories: 100,    // Default value
-        date: new Date().toISOString(),
-        userId: currentUser.value.id 
-      })
-    })
-    const result = await response.json()
-    if (result.isSuccess) {
-      displayedActivities.value.unshift(result.data)
-      totalActivities.value += 1
-      newActivity.value = ''
-    }
-  } finally {
-    isAddingLoading.value = false
-  }
 
-}
-
-async function deleteActivity(id) {
-  try {
-    const response = await fetch(`${API_URL}/activities/${id}`, {
-      method: 'DELETE',
-      headers: { 'Authorization': `Bearer ${token.value}` }
-    })
-    const result = await response.json()
-    if (result.isSuccess) {
-      displayedActivities.value = displayedActivities.value.filter(a => a.id !== id)
-      totalActivities.value -= 1
-    }
-  } catch (error) { console.error("Failed to delete:", error) }
-}
 
 // --- INFINITE SCROLL ---
 const el = ref(null)
