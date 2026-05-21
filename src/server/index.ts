@@ -3,6 +3,7 @@ import usersController from "./controllers/userController"
 import { DataEnvelope } from "./types/dataEnvelopes"
 import dotenv from "dotenv" 
 import activityController from "./controllers/activityController"
+import activityGoalController from "./controllers/acticityGoalController"
 dotenv.config()
 import cors from 'cors'; // 1. Import it
 const app = express();
@@ -29,6 +30,7 @@ app.get("/", (_req, res)=> {
     })
     .use("/api/v1/users",usersController)
     .use("/api/v1/activities",activityController)
+    .use("/api/v1/activity-goals",activityGoalController)
 
 ///////////Error handling
 app.use((
