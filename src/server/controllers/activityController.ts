@@ -57,17 +57,7 @@ app.get("/", (req, res) => {
     };
     res.send(response)
 })
-//duplicate? is it possible to have two get routes with the same path? if not, should we change the path for one of them? j
-.get("/user/:userId", (req, res) => {
-    const userId = Number(req.params.userId);
-    const { list, count } = model.getByUserId(userId);
-    const response: DataListEnvelope<any> = {
-        data: list,
-        isSuccess: true,
-        total: count
-    };
-    res.send(response)
-})
+
 .patch("/:id", (req, res) => {
     const updated = model.update(Number(req.params.id), req.body);
     const response: DataEnvelope<any> = {
