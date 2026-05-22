@@ -74,12 +74,12 @@ export function remove(id: number) {
 
 export function getFriendsActivities(userId: number) {
     const user = userData.users.find((u: any) => u.id === userId);
-    console.log("Found User:", user?.name, "Friends:", user?.friends); // 👈 Debug 1
+
     
     if (!user || !user.friends) return { list: [], count: 0 };
 
     const friendsActivities = data.activities.filter((a: any) => {
-        console.log("Checking activity for user:", a.userId); // 👈 Debug 2
+   
         return user.friends.includes(Number(a.userId));
     });
 

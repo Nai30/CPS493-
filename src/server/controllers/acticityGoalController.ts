@@ -18,10 +18,10 @@ app.get("/", (req, res) => {
     res.send(response)
 })
 
-.get("/friends/:userId",(req,res)=> {
+.get("/friends-goals/:userId",(req,res)=> {
  const userId = Number(req.params.userId);
     
-    const { list, count } = model.getFriendsActivities(userId); 
+    const { list, count } = model.getFriendsActivityGoals(userId); 
     const response: DataListEnvelope<any> = {
         data: list,
         isSuccess: true,
@@ -55,39 +55,7 @@ app.get("/", (req, res) => {
     };
     res.send(response)
 })
-
-.patch("/:id", (req, res) => {
-    const updated = model.update(Number(req.params.id), req.body);
-    const response: DataEnvelope<any> = {
-        data: updated,
-        isSuccess: true
-    };
-    res.send(response);
-})
-.put("/:id", (req, res) => {
-    const updated = model.update(Number(req.params.id), req.body);
-    const response: DataEnvelope<any> = {
-        data: updated,
-        isSuccess: true
-    };  
-    res.send(response);
-})
-.delete("/:id", (req, res) => {
-    const removed = model.remove(Number(req.params.id));
-    const response: DataEnvelope<any> = {
-        data: removed,
-        isSuccess: true
-    };
-    res.send(response);
-})
-.post("/", (req, res) => {
-    const newActivity = model.create(req.body);
-    const response: DataEnvelope<any> = {
-        data: newActivity,
-        isSuccess: true
-    };
-    res.status(201).send(response)
-});
+;
 
 
 export default app;

@@ -16,6 +16,8 @@ export interface ActivityGoals {
     userId: number; 
     title: string;
     type: string;
+    metric: string;
+    friendIDd: number;
     target_Value: number;
     target_Date: string;
 }
@@ -37,46 +39,36 @@ export const getByUserId = (userId: number) => {
     };
 }
 
-export const create = (activity: any) => {
-    const newActivityGoal = {
-        ...activity,
-        id: data.activityGoals.length > 0 ? Math.max(...data.activityGoals.map((a: any) => a.id)) + 1 : 1,
-    };
-    data.activityGoals.push(newActivityGoal);
-    saveToFile(); // 💾 Persist
-    return newActivityGoal;
-}
 
-export function update(id: number, activityUpdates: Partial<ActivityGoals>) {
-    const index = data.activityGoals.findIndex((a: any) => a.id === id);
-    if (index === -1) {
-        throw { status: 404, message: "Activity not found" };
+
+export function getFriendsActivityGoals(userId: number) {
+// 1. Find the target user in your user dataset
+    const user = userData.users.find((u: any) => u.id === userId);
+       console.log("Found User:", user?.name, "Friends:", user?.friends);
+    // 2. Safeguard: Ensure the user exists and actually has friends listed
+    if (!user || !user.friends || user.friends.length === 0) {
+        return { list: [], count: 0 };
     }
 
-    data.activityGoals[index] = { ...data.activityGoals[index], ...activityUpdates };
-    saveToFile(); // 💾 Persist
-    return data.activityGoals[index];
-}
+    const allFriendsActivities: any[] = [];
 
-export function remove(id: number) {
-    const index = data.activityGoals.findIndex((a: any) => a.id === id);
-    if (index === -1) return null;
-
-    const removedActivity = data.activityGoals.splice(index, 1)[0];
-    saveToFile(); // 💾 Persist
-    return removedActivity;
-}
-
-export function getFriendsActivities(userId: number) {
-    const user = userData.users.find((u: any) => u.id === userId);
-    console.log("Found User:", user?.name, "Friends:", user?.friends); // 👈 Debug 1
-    
-    if (!user || !user.friends) return { list: [], count: 0 };
-
-    const friendsActivities = data.activities.filter((a: any) => {
-        console.log("Checking activity for user:", a.userId); // 👈 Debug 2
-        return user.friends.includes(Number(a.userId));
+    // 3. Loop through each friend's userId
+    user.friends.forEach((friendId: number) => {
+        // Reuse your existing function to get this specific friend's sorted goals
+        const friendResult = getByUserId(friendId);
+        
+        // Push all the individual goals from their list into our main array
+        allFriendsActivities.push(...friendResult.list);
+        console.log(`Friend ID: ${friendId}, Goals Found: ${friendResult.count}`);
+        friendResult.list.forEach((goal: any, index: number) => {
+        console.log(`  └─ [Goal #${index + 1}] Title: "${goal.title}", Metric: ${goal.metric}, Target: ${goal.target_value}`);
+    });
+      
     });
 
-    return { list: friendsActivities, count: friendsActivities.length };
+    // 4. Return the combined list and the total count
+    return { 
+        list: allFriendsActivities, 
+        count: allFriendsActivities.length 
+    };
 }
