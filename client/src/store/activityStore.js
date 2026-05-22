@@ -2,6 +2,8 @@ import { ref } from 'vue';
 import { token,API_URL } from './userStore'; 
 
 export const myActivities = ref([]);
+export const activityGoals = ref([]);
+export const friendGoals = ref([]);
 
 export async function fetchMyActivities() {
     try {
@@ -23,7 +25,7 @@ export async function fetchMyActivityGoals(){
         });
         const result = await response.json();
         if (result.isSuccess) {
-            myActivities.value = result.data;
+            activityGoals.value = result.data;
         }
     } catch (err) {
         console.error("Failed to load activity goals:", err);
@@ -50,9 +52,9 @@ export async function addActivity() {
     })
     const result = await response.json()
     if (result.isSuccess) {
-      displayedActivities.value.unshift(result.data)
-      totalActivities.value += 1
-      newActivity.value = ''
+      activityGoals.value.unshift(result.data)
+      totalActivityGoals.value += 1
+        newActivityGoal.value = ''
     }
   } finally {
     isAddingLoading.value = false
@@ -75,47 +77,20 @@ export async function deleteActivity(id) {
   } catch (error) { console.error("Failed to delete:", error) }
 }
 
-export async function addActivityGoal() {
-  if (newActivityGoal.value.trim() === '') return
-  isAddingLoading.value = true
-  try {
-    const response = await fetch(`${API_URL}/activity-goals`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${token.value}`,
-        'Content-Type': 'application/json'
-      },
-   
-      body: JSON.stringify({ 
-        type: newActivityGoal.value, 
-        duration_min: 30, // Default value
-        calories: 100,    // Default value
-        date: new Date().toISOString(),
-        userId: currentUser.value.id 
-      })
-    })
-    const result = await response.json()
-    if (result.isSuccess) {
-      displayedActivities.value.unshift(result.data)
-      totalActivities.value += 1
-      newActivity.value = ''
-    }
-  } finally {
-    isAddingLoading.value = false
-  }
 
-}
 
-export async function deleteActivityGoal(id) {
-  try {
-    const response = await fetch(`${API_URL}/activity-goals/${id}`, {
-      method: 'DELETE',
-      headers: { 'Authorization': `Bearer ${token.value}` }
-    })
-    const result = await response.json()
-    if (result.isSuccess) {
-      displayedActivities.value = displayedActivities.value.filter(a => a.id !== id)
-      totalActivities.value -= 1
+
+export async function getFriendGoals(friendId) {
+    try {
+        const response = await fetch(`${API_URL}/activity-goals/friends-goals/${friendId}`, {
+            headers: { 'Authorization': `Bearer ${token.value}` }
+        });
+        const result = await response.json();
+        if (result.isSuccess) {
+            friendGoals.value = result.data;
+        }
+    } catch (err) {
+        console.error("Failed to load friend's goals:", err);
+        return [];
     }
-  } catch (error) { console.error("Failed to delete:", error) }
 }
