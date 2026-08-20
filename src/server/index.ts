@@ -4,7 +4,8 @@ import { DataEnvelope } from "./types/dataEnvelopes"
 import dotenv from "dotenv" 
 import activityController from "./controllers/activityController"
 import activityGoalController from "./controllers/acticityGoalController"
-dotenv.config()
+import path from "path"
+dotenv.config({ path: path.resolve(__dirname, "../.env") })
 import cors from 'cors'; // 1. Import it
 const app = express();
 
