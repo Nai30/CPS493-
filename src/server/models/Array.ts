@@ -1,7 +1,11 @@
 
-interface Array<T> {
-    sortBy(key: keyof T, descending?: boolean): T[]
+declare global {
+    interface Array<T> {
+        sortBy(key: keyof T, descending?: boolean): T[]
+    }
 }
+
+export {}
 
 Array.prototype.sortBy = function <T>(
     this: T[],

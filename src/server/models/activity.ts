@@ -1,19 +1,8 @@
-import fs from "fs";
-import path from "path";
-
-// 1. Load the data
-const data = require("../data/activities.json");
-const userData = require("../data/users.json");
-const fileName = path.join(__dirname, "../data/activities.json");
-
-// Helper to save to file
-const saveToFile = () => {
-    fs.writeFileSync(fileName, JSON.stringify(data, null, 2), "utf-8");
-};
+import { supabase } from "../supabase";
 
 export interface Activity {
     id: number;
-    userId: number; 
+    userId: number;
     description?: string;
     duration_min: number;
     calories: number;
@@ -22,66 +11,52 @@ export interface Activity {
     distance_km?: number;
 }
 
-// 2. Fix the function logic
-export const getAll = () => {
-    return { list: data.activities, count: data.activities.length };
-};
+const table = process.env.SUPABASE_ACTIVITIES_TABLE || "activities";
+const usersTable = process.env.SUPABASE_USERS_TABLE || "users";
 
-export const getByUserId = (userId: number, page = 1, limit = 5) => {
-    const filteredList = data.activities
-        .filter((act: any) => act.userId === userId)
-        .sort((a: any, b: any) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
-
-    const total = filteredList.length;
-    const startIndex = (page - 1) * limit;
-    const paginated = filteredList.slice(startIndex, startIndex + limit);
-
-    return {
-        list: paginated,
-        count: total
-    };
+export async function getAll() {
+    const { data, error } = await supabase.from(table).select("*");
+    if (error) throw error;
+    return { list: data as Activity[], count: data.length };
 }
 
-export const create = (activity: any) => {
-    const newActivity = {
-        ...activity,
-        id: data.activities.length > 0 ? Math.max(...data.activities.map((a: any) => a.id)) + 1 : 1,
-    };
-    data.activities.push(newActivity);
-    saveToFile(); // 💾 Persist
-    return newActivity;
+export async function getByUserId(userId: number, page = 1, limit = 5) {
+    const { data, error, count } = await supabase
+        .from(table)
+        .select("*", { count: "exact" })
+        .eq("userId", userId)
+        .order("date", { ascending: false })
+        .range((page - 1) * limit, page * limit - 1);
+    if (error) throw error;
+    return { list: data as Activity[], count: count ?? 0 };
 }
 
-export function update(id: number, activityUpdates: Partial<Activity>) {
-    const index = data.activities.findIndex((a: any) => a.id === id);
-    if (index === -1) {
-        throw { status: 404, message: "Activity not found" };
-    }
-
-    data.activities[index] = { ...data.activities[index], ...activityUpdates };
-    saveToFile(); // 💾 Persist
-    return data.activities[index];
+export async function create(activity: Omit<Activity, "id">) {
+    const { data, error } = await supabase.from(table).insert(activity).select().single();
+    if (error) throw error;
+    return data as Activity;
 }
 
-export function remove(id: number) {
-    const index = data.activities.findIndex((a: any) => a.id === id);
-    if (index === -1) return null;
-
-    const removedActivity = data.activities.splice(index, 1)[0];
-    saveToFile(); // 💾 Persist
-    return removedActivity;
+export async function update(id: number, activityUpdates: Partial<Activity>) {
+    const { data, error } = await supabase.from(table).update(activityUpdates).eq("id", id).select().maybeSingle();
+    if (error) throw error;
+    if (!data) throw { status: 404, message: "Activity not found" };
+    return data as Activity;
 }
 
-export function getFriendsActivities(userId: number) {
-    const user = userData.users.find((u: any) => u.id === userId);
+export async function remove(id: number) {
+    const { data, error } = await supabase.from(table).delete().eq("id", id).select().maybeSingle();
+    if (error) throw error;
+    return data as Activity | null;
+}
 
-    
-    if (!user || !user.friends) return { list: [], count: 0 };
+export async function getFriendsActivities(userId: number) {
+    const { data: user, error: userError } = await supabase.from(usersTable).select("friends").eq("id", userId).maybeSingle();
+    if (userError) throw userError;
+    const friendIds = (user?.friends as number[] | undefined) ?? [];
+    if (friendIds.length === 0) return { list: [], count: 0 };
 
-    const friendsActivities = data.activities.filter((a: any) => {
-   
-        return user.friends.includes(Number(a.userId));
-    });
-
-    return { list: friendsActivities, count: friendsActivities.length };
+    const { data, error } = await supabase.from(table).select("*").in("userId", friendIds).order("date", { ascending: false });
+    if (error) throw error;
+    return { list: data as Activity[], count: data.length };
 }

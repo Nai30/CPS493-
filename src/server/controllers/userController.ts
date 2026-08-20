@@ -1,126 +1,68 @@
-import { Router } from "express"
-import { getAll, get, create, update, remove } from "../models/user"
+import { Router } from "express";
 import * as model from "../models/user";
-import { User, DataEnvelope, DataListEnvelope } from "../types"
-import { authorize } from "../middleware/auth"
+import { User, DataEnvelope, DataListEnvelope } from "../types";
+import { authorize } from "../middleware/auth";
 
-const app = Router()
+const app = Router();
 
-app.get("/", (req, res) => {
-    const { list, count } = getAll(req.query)
-    const sanitizedUsers = list.map((x) => ({
-        ...x,
-        password: undefined,
-    }))
-    const response: DataListEnvelope<User> = {
-        data: sanitizedUsers,
-        isSuccess: true,
-        total: count,
-    }
-    res.send(response)
-})
-.post("/login", (req, res) => {
-    const { email, password } = req.body;
-    
-    // Safety check: if model.login fails
+app.get("/", async (req, res, next) => {
     try {
-        const {user, token} = model.login(email, password);
-        
-        const response: DataEnvelope<any> = {
-            data: {user, token},
-            isSuccess: true,
-            message: `Welcome back, ${user.name}!`
-        };
-
-        // CHANGE THIS LINE:
-        res.json(response); 
-        
-    } catch (error) {
-        res.status(401).json({
-            isSuccess: false,
-            message: "Invalid email or password"
+        const { list, count } = await model.getAll(req.query);
+        const sanitizedUsers = list.map((item) => {
+            const { passwordHash: _, password_hash: __, ...user } = item as User & { password_hash?: string };
+            return user;
         });
-    }
-})
-    .get("/count", (req, res) => {
-        const { count } = getAll(req.query)
-        const response: DataEnvelope<{ count: number }> = {
-            data: { count },
-            isSuccess: true,
-        }
-        res.send(response)
-    })
-    .get("/:id", (req, res) => {
-        const { id } = req.params
-        const response: DataEnvelope<User> = {
-            data: get(Number(id)),
-            isSuccess: true,
-        }
-        res.send(response)
-    })
+        res.send({ data: sanitizedUsers, isSuccess: true, total: count } satisfies DataListEnvelope<Omit<User, "passwordHash">>);
+    } catch (error) { next(error); }
+});
 
-    .post("/", (req, res) => {
-        const newUser = create(req.body)
-        const response: DataEnvelope<User> = {
-            data: newUser,
-            isSuccess: true,
-        }
-        res.send(response)
-    })
-    .patch("/:id", (req, res) => {
-        const { id } = req.params
-        const updatedUser = update(Number(id), req.body)
-        const response: DataEnvelope<User> = {
-            data: updatedUser as User,
-            isSuccess: true,
-        }
-        res.send(response)
-    })
-    .put("/:id",authorize, (req, res) => {
-        if ((req as any).user?.role !== "admin") {
-        return res.status(403).json({ isSuccess: false, message: "Admin access required." });
-    }
-        const { id } = req.params
-        const updatedUser = update(Number(id), req.body)
-        const response: DataEnvelope<User> = {
-            data: updatedUser as User,
-            isSuccess: true,
-        }
-        res.send(response)
-    })  
-.delete("/:id",authorize, (req, res) => {
-
-
-   if ((req as any).user?.role !== "admin") {
-  return res.status(403).json({
-    isSuccess: false,
- 
-    message: `Unauthorized: ou must be an admin to delete users. ${(req as any).user?.name}, with role ${(req as any).user?.role}, attempted to delete user with id ${req.params.id}.`
-})
-}
-
-    const { id } = req.params;
-    
+app.post("/login", async (req, res) => {
     try {
-        const removedUser = remove(Number(id));
-
-        // If the user wasn't found, stop here to avoid reading .name of null
-        if (!removedUser) {
-            return res.status(404).json({
-                isSuccess: false,
-                message: "User not found."
-            });
-        }
-
-        res.json({
-            data: removedUser,
-            isSuccess: true,
-            message: `User ${removedUser.name} has been removed.`
-        });
+        const { user, token } = await model.login(req.body.email, req.body.password);
+        res.json({ data: { user, token }, isSuccess: true, message: `Welcome back, ${user.name}!` } satisfies DataEnvelope<any>);
     } catch (error) {
-        console.error("DETAILED ERROR:", error); // Check your terminal for this!
-        res.status(500).json({ isSuccess: false, message: "Server error" });
+        if ((error as any)?.status === 401) {
+            return res.status(401).json({ isSuccess: false, message: "Invalid email or password" });
+        }
+        res.status(500).json({ isSuccess: false, message: "Unable to connect to the user database" });
     }
 });
 
-export default app
+app.get("/count", async (req, res, next) => {
+    try {
+        const { count } = await model.getAll(req.query);
+        res.send({ data: { count }, isSuccess: true } satisfies DataEnvelope<{ count: number }>);
+    } catch (error) { next(error); }
+});
+
+app.get("/:id", async (req, res, next) => {
+    try { res.send({ data: await model.get(Number(req.params.id)), isSuccess: true } satisfies DataEnvelope<User>); }
+    catch (error) { next(error); }
+});
+
+app.post("/", async (req, res, next) => {
+    try { res.send({ data: await model.create(req.body), isSuccess: true } satisfies DataEnvelope<User>); }
+    catch (error) { next(error); }
+});
+
+app.patch("/:id", async (req, res, next) => {
+    try { res.send({ data: await model.update(Number(req.params.id), req.body), isSuccess: true } satisfies DataEnvelope<User>); }
+    catch (error) { next(error); }
+});
+
+app.put("/:id", authorize, async (req, res, next) => {
+    if (req.user?.role !== "admin") return res.status(403).json({ isSuccess: false, message: "Admin access required." });
+    try { res.send({ data: await model.update(Number(req.params.id), req.body), isSuccess: true } satisfies DataEnvelope<User>); }
+    catch (error) { next(error); }
+});
+
+app.delete("/:id", authorize, async (req, res, next) => {
+    if (req.user?.role !== "admin") return res.status(403).json({ isSuccess: false, message: "Admin access required." });
+    try {
+        const removedUser = await model.remove(Number(req.params.id));
+        if (!removedUser) return res.status(404).json({ isSuccess: false, message: "User not found." });
+        res.json({ data: removedUser, isSuccess: true, message: `User ${removedUser.name} has been removed.` });
+    } catch (error) { next(error); }
+});
+
+export default app;

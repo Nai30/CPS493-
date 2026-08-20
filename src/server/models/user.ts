@@ -1,24 +1,18 @@
 import type { User } from "../types/index";
 import { PagingRequest } from "../types/dataEnvelopes";
 import jwt from "jsonwebtoken";
-import fs from "fs";
-import path from "path";
+import { supabase } from "../supabase";
 
-// 1. Load the data. We use 'data1' as the container and 'usersArray' as the pointer.
-const data1 = require("../data/users.json");
-const fileName = path.join(__dirname, "../data/users.json");
 const JWT_SECRET = process.env.JWT_SECRET || "change-me-later";
+const table = process.env.SUPABASE_USERS_TABLE || "users";
 
 type ItemType = User;
-const usersArray: ItemType[] = data1.users;
 
-// Helper function to save changes to the disk
-const saveToFile = () => {
-    fs.writeFileSync(fileName, JSON.stringify(data1, null, 2), "utf-8");
-};
+export async function getAll(params: PagingRequest) {
+    const { data, error } = await supabase.from(table).select("*");
+    if (error) throw error;
 
-export function getAll(params: PagingRequest) {
-    let list = [...usersArray]; // Use a spread to avoid mutating the original array during filtering
+    let list = [...(data as ItemType[])];
     const count = list.length;
 
     if (params?.search) {
@@ -47,52 +41,42 @@ export function getAll(params: PagingRequest) {
     return { list, count };
 }
 
-export function get(id: number): ItemType {
-    const item = usersArray.find((u) => u.id === id);
-    if (!item) {
+export async function get(id: number): Promise<ItemType> {
+    const { data, error } = await supabase.from(table).select("*").eq("id", id).maybeSingle();
+    if (error) throw error;
+    if (!data) {
         throw { status: 404, message: "User not found" };
     }
-    return item;
+    return data as ItemType;
 }
 
-export function create(user: ItemType) {
-    const newItem = {
-        ...user,
-        id: usersArray.length > 0 ? Math.max(...usersArray.map(u => u.id)) + 1 : 1,
-    };
-    usersArray.push(newItem);
-    saveToFile();
-    return newItem;
+export async function create(user: ItemType) {
+    const { data, error } = await supabase.from(table).insert(user).select().single();
+    if (error) throw error;
+    return data as ItemType;
 }
 
-export function update(id: number, user: Partial<ItemType>) {
-    const index = usersArray.findIndex((u) => u.id === id);
-    if (index === -1) {
+export async function update(id: number, user: Partial<ItemType>) {
+    const { data, error } = await supabase.from(table).update(user).eq("id", id).select().maybeSingle();
+    if (error) throw error;
+    if (!data) {
         throw { status: 404, message: "User not found" };
     }
-
-    // Merge existing user data with the new updates
-    usersArray[index] = { ...usersArray[index], ...user };
-    
-    saveToFile();
-    return usersArray[index];
+    return data as ItemType;
 }
 
-export function remove(id: number) {
-    const index = usersArray.findIndex((u) => u.id === id);
-    if (index === -1) return null;
-
-    const removedUser = usersArray.splice(index, 1)[0];
-    saveToFile();
-    return removedUser;
+export async function remove(id: number) {
+    const { data, error } = await supabase.from(table).delete().eq("id", id).select().maybeSingle();
+    if (error) throw error;
+    return (data as ItemType | null) ?? null;
 }
 
-export function login(email: string, password: string) {
-    const user = usersArray.find(
-        (u) => u.email === email && u.passwordHash === password,
-    );
-    
-    if (!user) {
+export async function login(email: string, password: string) {
+    const { data: user, error } = await supabase.from(table).select("*").eq("email", email).maybeSingle();
+    if (error) throw error;
+
+    const storedPassword = user && ((user as any).passwordHash ?? (user as any).password_hash);
+    if (!user || storedPassword !== password) {
         throw { status: 401, message: "Invalid email or password" };
     }
 
@@ -101,13 +85,13 @@ export function login(email: string, password: string) {
             id: user.id,
             name: user.name,
             role: user.role,
-            passwordHash: user.passwordHash
+            passwordHash: storedPassword
         }, 
         JWT_SECRET, 
         { expiresIn: "1h" }
     );
 
-    const { passwordHash: _, ...userWithoutPassword } = user;
+    const { passwordHash: _, password_hash: __, ...userWithoutPassword } = user as any;
     return { 
         user: userWithoutPassword, 
         token 

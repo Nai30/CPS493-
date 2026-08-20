@@ -1,61 +1,37 @@
 import { Router } from "express";
 import * as model from "../models/activity-Goals";
-import { DataListEnvelope, DataEnvelope } from "../types";
+import { DataListEnvelope } from "../types";
 import { authorize } from "../middleware/auth";
 
 const app = Router();
+app.use(authorize);
 
-app.use(authorize); 
+app.get("/", async (_req, res, next) => {
+    try {
+        const result = await model.getAll();
+        res.send({ data: result.list, isSuccess: true, total: result.count } satisfies DataListEnvelope<any>);
+    } catch (error) { next(error); }
+});
 
-app.get("/", (req, res) => {
-    const { list, count } = model.getAll();
-    
-    const response: DataListEnvelope<any> = {
-        data: list,
-        isSuccess: true,
-        total: count
-    };
-    res.send(response)
-})
+app.get("/friends-goals/:userId", async (req, res, next) => {
+    try {
+        const result = await model.getFriendsActivityGoals(Number(req.params.userId));
+        res.send({ data: result.list, isSuccess: true, total: result.count } satisfies DataListEnvelope<any>);
+    } catch (error) { next(error); }
+});
 
-.get("/friends-goals/:userId",(req,res)=> {
- const userId = Number(req.params.userId);
-    
-    const { list, count } = model.getFriendsActivityGoals(userId); 
-    const response: DataListEnvelope<any> = {
-        data: list,
-        isSuccess: true,
-        total: count
-    };
-    res.send(response);
+app.get("/my-activitygoals", async (req, res, next) => {
+    try {
+        const result = await model.getByUserId((req as any).user.id);
+        res.send({ data: result.list, isSuccess: true, total: result.count } satisfies DataListEnvelope<any>);
+    } catch (error) { next(error); }
+});
 
-})
-.get("/my-activitygoals", (req, res) => {
-    // The bouncer (authorize) put the user info into req.user
-    const userId = (req as any).user.id;
-    const { list, count } = model.getByUserId(userId);
- 
-        const response: DataListEnvelope<any> = {
-            data: list,
-            isSuccess: true,
-            total: count
-        };
-        res.send(response);
-
-
-})
-
-.get("/user/:userId", (req, res) => {
-    const userId = Number(req.params.userId);
-    const { list, count } = model.getByUserId(userId);
-    const response: DataListEnvelope<any> = {
-        data: list,
-        isSuccess: true,
-        total: count
-    };
-    res.send(response)
-})
-;
-
+app.get("/user/:userId", async (req, res, next) => {
+    try {
+        const result = await model.getByUserId(Number(req.params.userId));
+        res.send({ data: result.list, isSuccess: true, total: result.count } satisfies DataListEnvelope<any>);
+    } catch (error) { next(error); }
+});
 
 export default app;
